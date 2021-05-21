@@ -1,0 +1,18 @@
+<div class="product-card">
+  <div>
+    <div class="text-center sale d-inline-block" *ngIf="sale">Sale</div>
+    <p class="float-right tag-price d-inline-block">${{price}}</p>
+  </div>
+  <div class="p-2 product-img-container">
+    <img src="{{image}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+      height="15vh" alt="">
+  </div>
+  <div class="product-info">
+    <div class="product-title">{{title}}</div>
+    <div class="product-features">{{info}}</div>
+    <div class="rating">
+      <bar-rating [(rate)]="rate" [max]="5" [readOnly]="true"></bar-rating>
+    </div>
+    <div class="price">${{price}}</div>
+  </div>
+</div>

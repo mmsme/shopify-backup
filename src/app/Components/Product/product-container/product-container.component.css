@@ -1,0 +1,18 @@
+.card {
+  margin: 3.5ex 3ex 1.5ex 3ex;
+}
+
+.card-container-title {
+  margin-bottom: 1.8ex;
+  font-size: 2.4em;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.788);
+}
+
+.view-all-btn {
+  font-size: x-larger;
+  background-color: #28DF99;
+  border-radius: 5rem;
+  width: 14em;
+  margin-top: 1ex;
+}

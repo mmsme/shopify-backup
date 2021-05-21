@@ -1,0 +1,19 @@
+<div class="border-0 shadow card">
+  <div class="card-body">
+    <div class="d-flex justify-content-center">
+      <div class="card-container-title">Best Sellers</div>
+    </div>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let item of Products">
+        <ng-template carouselSlide>
+          <app-product-card [product-name]="item.title" [sale]='item.sale' [price]="item.price" [rate]="item.rate"
+            [product-info]="item.info" [img]="item.img">
+          </app-product-card>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="pl-5 pr-5 mt-3 mb-3 text-white btn btn-lg view-all-btn">View All</button>
+  </div>
+</div>

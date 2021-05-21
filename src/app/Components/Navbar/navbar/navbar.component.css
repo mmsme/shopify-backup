@@ -1,0 +1,75 @@
+#top-bar {
+  background-color: #1c1427;
+}
+
+.nav-link {
+  color: #e3e2e4ad;
+  margin-right: 1.5ex;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+#middle-bar {
+  background-color: #fcfcfc;
+  padding: 0.5ex 2rem;
+}
+
+.navbar-brand {
+  font-size: 4rem;
+  padding: 0;
+  margin: -1em 0;
+  font-family: lemon;
+  transition: all 400ms;
+}
+
+app-search {
+  width: 70%;
+  margin: 1ex 2em;
+}
+
+.navbar-brand:hover {
+  color: #28DF99;
+}
+
+@media only screen and (max-width: 770px) {
+  .navbar-brand {
+    margin: -0.5ex 0;
+  }
+  #middle-bar {
+    padding: 0;
+  }
+  app-search {
+    width: 100%;
+    margin: 1ex 0;
+  }
+}
+
+.login-btn {
+  width: 50px;
+  height: 50px;
+  padding: 7px 10px;
+  border-radius: 5em;
+  font-size: 1.3rem;
+  text-align: center;
+  background-color: #28DF99;
+}
+
+#login {
+  cursor: pointer;
+}
+
+#login-label {
+  font-size: x-large;
+  font-weight: 400;
+}
+
+.login-btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-link:hover {
+  color: #28DF99 !important;
+}

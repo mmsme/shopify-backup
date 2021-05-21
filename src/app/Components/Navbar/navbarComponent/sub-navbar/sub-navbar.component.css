@@ -1,0 +1,73 @@
+.subNavbar{
+  background-color: #dfdfdf;
+}
+
+
+.nav-link{
+  color: #1c1427cc;
+  font-size: large;
+  font-size: medium;
+}
+
+.nav-link:hover{
+  color: black;
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+}
+
+.dropdown-item{
+  padding: 1ex 1.5ex;
+  text-transform: capitalize;
+  font-size: medium;
+}
+
+.dropdown-item:hover{
+  background-color: #28df99;
+  color: #fff;
+}
+
+.dropdown-menu{
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none;
+  width: 18rem;
+}
+
+.dropdown-toggle::after {
+  display:none;
+}
+
+.fas{
+  margin-right: 5px;
+  font-size: medium;
+  font-size: medium;
+}
+
+.scrollbarSubNavBar{
+  max-height: 45px;
+  background-color: #dfdfdf;
+  padding: 1ex 2ex;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.item{
+  margin-right: 4ex;
+  color: #1c1427cc;
+  cursor: pointer;
+}
+
+.item:hover{
+  color: #28df99;
+}
+
+.scrollbarSubNavBar::-webkit-scrollbar{
+  width: 0;
+}

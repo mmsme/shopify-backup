@@ -1,0 +1,23 @@
+.side-cart-control{
+  height: fit-content;
+  width: fit-content;
+  background-color: #DFDFDF;
+  border-radius: 5em;
+}
+
+.cost-box{
+  width: 7rem;
+  padding: 12px 20px;
+  font-size: large;
+}
+
+.btn-circle.btn {
+  width: 50px;
+  height: 50px;
+  padding: 6px 0px;
+  border-radius: 5em;
+  font-size: large;
+  text-align: center;
+  color: #1c1427;
+  background-color: #28DF99;
+}
