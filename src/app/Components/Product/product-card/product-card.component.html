@@ -1,11 +1,12 @@
 <div class="product-card">
-  <div>
-    <div class="text-center sale d-inline-block" *ngIf="sale">Sale</div>
-    <p class="float-right tag-price d-inline-block">${{price}}</p>
+  <div class="d-flex justify-content-between">
+    <div class="text-center sale d-inline-flex align-content-center justify-content-center" [class.hidden]="sale">
+      <span>sale</span>
+    </div>
+    <p class="pt-1 pr-2 tag-price d-inline-block" [class.hidden]="sale">-{{discount}}%</p>
   </div>
-  <div class="p-2 product-img-container">
-    <img src="{{image}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
-      height="15vh" alt="">
+  <div class="p-2 product-img-container justify-content-around align-content-center">
+    <img src="{{image}}" class="img-fluid" alt="">
   </div>
   <div class="product-info">
     <div class="product-title">{{title}}</div>

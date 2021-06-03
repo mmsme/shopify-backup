@@ -14,14 +14,15 @@
 #middle-bar {
   background-color: #fcfcfc;
   padding: 0.5ex 2rem;
+  height: fit-content;
 }
 
 .navbar-brand {
   font-size: 4rem;
-  padding: 0;
-  margin: -1em 0;
   font-family: lemon;
   transition: all 400ms;
+  height: 2.5ex;
+  padding-top: 25px;
 }
 
 app-search {

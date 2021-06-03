@@ -1,5 +1,6 @@
 .card {
-  margin: 3.5ex 3ex 1.5ex 3ex;
+  margin: 3.5ex 3ex 4ex 3ex;
+  padding-top: 1em;
 }
 
 .card-container-title {
@@ -15,4 +16,9 @@
   border-radius: 5rem;
   width: 14em;
   margin-top: 1ex;
+}
+
+.owl-carousel .owl-item img {
+  display: block;
+  width: auto !important;
 }

@@ -7,13 +7,21 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
   @Input('product-name') title: string = 'demo title';
-  @Input('product-info') info: string = 'demo info about the product';
+  @Input('product-details') info: string = 'demo info about the product';
   @Input('price') price: number = 0;
-  @Input('img') image: string = '';
+  @Input('image') image: string = '';
   @Input('rate') rate: number = 0;
-  @Input('sale') sale: boolean = false;
+  @Input('discount') discount: number = 0;
+
+  sale: boolean = false;
 
   constructor() {}
 
   ngOnInit() {}
+
+  isHaveSale() {
+    if (this.discount != 0 || this.discount != undefined) {
+      this.sale = true;
+    }
+  }
 }

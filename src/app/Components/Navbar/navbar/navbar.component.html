@@ -14,7 +14,7 @@
 
 <section id="middle-bar">
   <nav class="navbar navbar-expand-sm navbar-light">
-    <a class="navbar-brand mr-md-4" href="#">Shopify</a>
+    <div class="navbar-brand mr-md-4" href="#"><span>Shopify</span></div>
 
     <!-- navbar menu in Small Screen -->
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
@@ -22,13 +22,13 @@
       <i class="fas fa-bars"></i>
     </button>
 
-    <app-search class="d-block d-sm-none"></app-search>
+    <app-search class="mt-2 d-block d-sm-none"></app-search>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
 
       <ul class="mt-2 ml-1 mr-2 mr-auto navbar-nav mt-lg-0 d-block d-sm-none">
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="mr-1 fas fa-user"></i> Login</a>
+          <a class="nav-link d-flex align-content-center" href="#">
+            <i class="mt-1 mr-1 fas fa-user"></i> <span>Login</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
@@ -41,11 +41,11 @@
     <!--Navbar controls-->
     <div id="navbar-controls" class="d-none d-md-flex justify-content-between w-100">
       <app-search class="flex-shrink-1"></app-search>
-      <div id="login" class="ml-3 d-flex justify-content-center align-content-center">
+      <div id="login" class="ml-3 d-flex">
         <button type="button" class="text-center btn login-btn float-md-right btn-sm">
           <span class="fas fa-user"></span>
         </button>
-        <span class="p-1 ml-md-1 ml-lg-2" id="login-label">Login</span>
+        <span class="p-1 pt-3 ml-md-1 ml-lg-2" id="login-label">Login</span>
       </div>
       <app-side-cart class="ml-lg-5 ml-md-1 float-sm-right"></app-side-cart>
     </div>

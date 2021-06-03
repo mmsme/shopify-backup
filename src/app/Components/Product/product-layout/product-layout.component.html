@@ -1,0 +1,55 @@
+<div class="text-center card d-none d-lg-block">
+  <div class="card-header">
+    <div class="flex-row d-flex justify-content-between">
+      <div class="d-flex">
+        <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="changeToGrid()">
+          <mat-icon [class.active]="!isList" [class.non-active]="isList">apps</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="changeToList()">
+          <mat-icon [class.active]="isList" [class.non-active]="!isList">view_list</mat-icon>
+        </button>
+      </div>
+      <div class="d-flex">
+        <button mat-button [matMenuTriggerFor]="menu">Sort</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="hightRatedSort()">High Rated</button>
+          <button mat-menu-item (click)="lowPriceSort()">lowest price</button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="flex-wrap grid-view d-flex justify-content-center" *ngIf="!isList">
+      <app-product-card class="m-1" *ngFor="let item of products" [product-name]="item.ProductName"
+        [product-details]="item.ProductDescription" [rate]="item.Rate" [price]="item.Price" [image]="item.Images[0]"
+        [discount]="item.Discount">
+      </app-product-card>
+    </div>
+    <div class="pl-1 pr-1 list-view" *ngIf="isList">
+      <app-product-card-vertical *ngFor="let item of products" [product-name]="item.ProductName" [rate]="item.Rate"
+        [price]="item.Price" [details]="item.ProductDescription" [image]="item.Images[0]"></app-product-card-vertical>
+    </div>
+  </div>
+</div>
+
+<div class="text-center card d-block d-lg-none">
+  <div class="card-header">
+    <div class="d-flex justify-content-end">
+      <button mat-button [matMenuTriggerFor]="menu">Sort</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>newest</button>
+        <button mat-menu-item>oldest</button>
+        <button mat-menu-item>High price</button>
+        <button mat-menu-item>lowest price</button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="flex-wrap grid-view d-flex justify-content-center">
+      <app-product-card class="m-1" *ngFor="let item of products" [product-name]="item.ProductName"
+        [product-details]="item.ProductDescription" [rate]="item.Rate" [price]="item.Price" [image]="item.Images[0]"
+        [discount]="item.Discount">
+      </app-product-card>
+    </div>
+  </div>
+</div>

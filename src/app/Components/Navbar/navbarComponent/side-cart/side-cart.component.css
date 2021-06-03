@@ -1,13 +1,13 @@
-.side-cart-control{
+.side-cart-control {
   height: fit-content;
   width: fit-content;
   background-color: #DFDFDF;
   border-radius: 5em;
 }
 
-.cost-box{
+.cost-box {
   width: 7rem;
-  padding: 12px 20px;
+  padding: 15px 18px;
   font-size: large;
 }
 

@@ -1,7 +1,7 @@
 <div class="input-group">
   <input type="text" id="search-text" class="form-control" placeholder="Search..." aria-label="SearchBox"
     aria-describedby="basic-addon1" name="searchBox" ngModel #searchBox="ngModel" required>
-  <i *ngIf="searchBox.value?.trim() !== ''" (click)="clearSearchBox(searchBox)" class="fas fa-times"></i>
+  <i *ngIf="searchBox.value?.trim() !== ''" (click)="clearSearchBox(searchBox)" class="pt-1 fas fa-times"></i>
   <div class="input-group-append">
     <button id="search-btn" class="btn" type="button" (click)="onSearch(searchBox)">
       <i class="fa fa-search" aria-hidden="true"></i>
