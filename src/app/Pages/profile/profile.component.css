@@ -1,0 +1,27 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body {
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}
+.card {
+  margin: 3ex 2ex 3ex 3ex;
+  padding-top: 1em;
+} 
+
+.btn {
+  font-size: x-larger;
+  background-color: #f68b1e;
+  border-radius: 5rem;
+  width: 14em;
+  margin-top: 1ex;
+}
+a{
+  color: #1c1427cc;
+  font-size: medium;
+  text-decoration: none;
+}
+.menu-item:hover {
+   background-color: #ededed;
+}

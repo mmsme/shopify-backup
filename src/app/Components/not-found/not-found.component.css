@@ -1,0 +1,17 @@
+a{
+  background:#f68b1e;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 44px;
+  font-weight: 300;
+  padding: 8px 40px;
+}
+a:hover{
+  background: #FFFFFF;
+  color:#f68b1e;
+  border: 1px solid#f68b1e;
+  text-decoration: none;
+}
+img{
+  width: 40%;
+}

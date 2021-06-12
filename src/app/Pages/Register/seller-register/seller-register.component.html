@@ -1,0 +1,167 @@
+<div class="wrapper">
+    <div class="inner">
+        <img src="../../assets/images/login&Register/470.png" alt="" class="image-1">
+
+        <form [formGroup]="Registerform" (ngSubmit)="OnSubmit()">
+            <h4>Seller Account</h4>
+
+            <div *ngIf="step == 1">
+                <h3>Step 1 - 2</h3>
+                <div class="form-holder ">
+                    <div class="row">
+                        <div class="form-holder col-6">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-control" formControlName="Fname" id="Fname">
+                            <div *ngIf="Registerform.get('Fname')?.invalid && Registerform.get('Fname')?.touched">
+                                <small class="text-danger">First Name is
+                                    required minimum 3 characters</small>
+                            </div>
+                        </div>
+                        <div class="form-holder col-6">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" formControlName="Lname" id="Lname">
+                            <div *ngIf="Registerform.get('Lname')?.invalid && Registerform.get('Lname')?.touched">
+                                <small class="text-danger">Last Name is
+                                    required minimum 3 characters</small>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="form-label">Store Name</label>
+                    <input type="text" class="form-control" formControlName="StoreName" id="StoreName">
+                    <div *ngIf="Registerform.get('StoreName')?.invalid && Registerform.get('StoreName')?.touched">
+                        <small class="text-danger">Store Name is
+                            required minimum 3 characters</small>
+                    </div>
+                </div>
+                <div class="form-holder">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="form-control" formControlName="Address" id="Address">
+                    <div *ngIf="Registerform.get('Address')?.invalid && Registerform.get('Address')?.touched">
+                        <small class="text-danger">Address is required </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-holder col-6">
+                        <label class="form-label">Email: </label>
+                        <input type="email" class="form-control" formControlName="Email" id="Email">
+                        <div *ngIf="Registerform.get('Email')?.invalid && Registerform.get('Email')?.touched">
+                            <small class="text-danger">Email is required </small>
+                        </div>
+                    </div>
+                    <div class="form-holder col-6">
+                        <label class="form-label">Phone: </label>
+                        <input type="text" class="form-control" formControlName="PhoneNumber" id="phone">
+                        <div *ngIf="Registerform.get('phone')?.invalid && Registerform.get('phone')?.touched">
+                            <small class="text-danger">phone is required </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="step == 2">
+                <h3>Step 2 - 2</h3>
+                <div class="form-holder">
+                    <section class="section-preview">
+                        <h2 class="btn" style="margin-left: 10px" (click)="downloadFile()">download copy of the
+                            Contract</h2>
+                        <br>
+                        <!-- <label class="form-label">Upload the Contract</label> -->
+                        <div class="input-group ">
+                            <div class="custom-file col-9">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01" (change)="contract($event)">
+                                <label class="custom-file-label" for="inputGroupFile01">
+                                    {{fileName3}}</label>
+                            </div>
+                        </div>
+                    </section>
+                    <br>
+                    <section class="section-preview">
+                        <!-- <label class="form-label">Upload copy of the ID card</label> -->
+                        <div class="input-group ">
+                            <div class="custom-file col-9">
+                                <input type="file" class="custom-file-input " id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01" (change)="IDCard($event)">
+                                <label class="custom-file-label" for="inputGroupFile01"> {{fileName1}}
+                                </label>
+                            </div>
+                            <img class="rounded-circle col-3" [src]="imageUrl1" />
+                        </div>
+                    </section>
+                    <section class="section-preview">
+                        <!-- <label class="form-label">Upload copy of the Tax Cart</label> -->
+                        <div class="input-group ">
+                            <div class="custom-file col-9">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01" (change)="TaxCard($event)">
+                                <label class="custom-file-label" for="inputGroupFile01">
+                                    {{fileName2}}</label>
+                            </div>
+                            <img class="rounded-circle col-3" [src]="imageUrl2" />
+                        </div>
+                    </section>
+                    <section class="section-preview">
+                        <!-- <label class="form-label">Upload copy of the Commercial Register</label> -->
+
+                        <div class="input-group">
+                            <div class="custom-file col-9">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01" (change)="commercialregister($event)">
+                                <label class="custom-file-label" for="inputGroupFile01">
+                                    {{fileName4}}</label>
+                            </div>
+                            <img class="rounded-circle col-3" [src]="imageUrl3" />
+                        </div>
+                    </section>
+                    <div class="row">
+                        <div class="form-holder col-6 form-group inner-addon right-addon">
+                            <label class="form-label">Password: *</label>
+                            <div class="input-group  mx-auto">
+                                <input type="password" [type]="showPassword ? 'text' : 'password'"
+                                    class="form-control pwd-control" formControlName="Password" id="Password">
+                                <i alt="show" class="far fa-eye eye-show" (click)="showPassword = !showPassword"
+                                    [class.hide]="!showPassword"></i>
+                                <i alt="hide" class="far fa-eye-slash eye-hide" (click)="showPassword = !showPassword"
+                                    [class.hide]="showPassword"></i>
+                            </div>
+                        </div>
+
+
+                        <div class="form-holder col-6 form-group inner-addon right-addon">
+                            <label class="form-label">Confirm Password: *</label>
+                            <div class="input-group  mx-auto">
+                                <input required type="password" [type]="showPassword1 ? 'text' : 'Password'"
+                                    class="form-control pwd-control" id="ConfirmPassword">
+                                <i alt="show" class="far fa-eye eye-show" (click)="showPassword1 = !showPassword1"
+                                    [class.hide]="!showPassword1"></i>
+                                <i alt="hide" class="far fa-eye-slash eye-hide" (click)="showPassword1 = !showPassword1"
+                                    [class.hide]="showPassword1"></i>
+                            </div>
+                        </div>
+                        <div class="col-12"
+                            *ngIf="Registerform.get('Password')?.invalid && Registerform.get('Password')?.touched">
+                            <small class="text-danger">Password is
+                                required minimum 8 characters and numbers and must contain CAPITAL character and @
+                                sign</small>
+                        </div>
+                        <div class="col-12"
+                            *ngIf="Registerform.get('ConfirmPassword')?.invalid && Registerform.get('ConfirmPassword')?.touched">
+                            <small class="text-danger">Confirm Password is
+                                required</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button *ngIf="step !=2" (click)="next()">Next</button>
+            <button href="#" *ngIf="step !=1" (click)="prev()">previous</button>
+            <button type="submit" *ngIf="step ==2">Submit</button>
+            <br>
+            <div class="text-center"><span>If you have account
+                    <a href="" id="login"
+                        style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;">
+                        Login </a></span></div>
+        </form>
+        <img src="../../assets/images/login&Register/image-2.png" alt="" class="image-2">
+    </div>
+
+</div>

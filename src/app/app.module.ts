@@ -11,6 +11,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
+import {  ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
+
 /**========================================================================
  *?                           My Components
  *========================================================================**/
@@ -29,6 +34,24 @@ import { FooterComponent } from './Components/Footer/Footer.component';
 import { ProductCardVerticalComponent } from './Components/Product/product-card-vertical/product-card-vertical.component';
 import { ProductLayoutComponent } from './Components/Product/product-layout/product-layout.component';
 
+import { ShoppingCartComponent } from './Components/shopping-cart/shopping-cart.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { AccountOverviewComponent } from './Components/ProfileSideMenu/account-overview/account-overview.component';
+import { AddressBookComponent } from './Components/ProfileSideMenu/address-book/address-book.component';
+import { ChangePassComponent } from './Components/ProfileSideMenu/change-pass/change-pass.component';
+import { DetailsComponent } from './Components/ProfileSideMenu/details/details.component';
+import { InboxComponent } from './Components/ProfileSideMenu/inbox/inbox.component';
+import { OrdersComponent } from './Components/ProfileSideMenu/orders/orders.component';
+import { SavedItemsComponent } from './Components/ProfileSideMenu/saved-items/saved-items.component';
+import { RecentlyViewedComponent } from './Components/ProfileSideMenu/recently-viewed/recently-viewed.component';
+import { ProfileComponent } from './Pages/profile/profile.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { CustomerRegisterComponent } from './Pages/Register/customer-register/customer-register.component';
+import { SellerRegisterComponent } from './Pages/Register/seller-register/seller-register.component';
+import { ForgetPasswordComponent } from './Pages/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
+import { ProductViewComponent } from './Pages/product-view/product-view.component';
+import { ProductSubCategoryComponent } from './Pages/product-sub-category/product-sub-category.component';
 /**========================================================================
  *?                           My Services
  *========================================================================**/
@@ -51,11 +74,31 @@ import { ProductService } from './Services/Product/product.service';
     FooterComponent,
     ProductCardVerticalComponent,
     ProductLayoutComponent,
+    ShoppingCartComponent,
+    NotFoundComponent,
+    AccountOverviewComponent,
+    AddressBookComponent,
+    ChangePassComponent,
+    DetailsComponent,
+    InboxComponent,
+    OrdersComponent,
+    SavedItemsComponent,
+    RecentlyViewedComponent,
+    ProfileComponent,
+    LoginComponent,
+    CustomerRegisterComponent,
+    SellerRegisterComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent,
+    ProductViewComponent,
+    ProductSubCategoryComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    HttpClientModule,
     CarouselModule,
     BrowserAnimationsModule,
     BarRatingModule,
@@ -63,8 +106,26 @@ import { ProductService } from './Services/Product/product.service';
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
+    SocialLoginModule
   ],
-  providers: [ProductService, CategoryService],
+  providers: [ProductService, CategoryService,{
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: true,
+      providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '38322060992-tn7u0jd3d66sh4l68djtaa96k447rjbe.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('204373248201567')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

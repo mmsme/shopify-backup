@@ -1,0 +1,69 @@
+<div class="container pt-4">
+    <div *ngIf="isEmpty; else showProducts">
+        <h1>You Cart Is Empty</h1>
+    </div>
+    <ng-template #showProducts>
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <h2 class="title">Your Cart</h2>
+                <!--  -->
+                <div class="border shadow-sm  p-3 rounded mt-3" *ngFor="let product of products">
+                    <div class="row">
+                        <div class="col-4 ">
+                            <img src="{{product.Image}}" class="img-fluid" style="height:10rem;" />
+                        </div>
+                        <div class="col-8">
+                            <h3 class="mb-4">{{product.Name}}</h3>
+                            <h5 class="price">{{product.Price}} EGP</h5>
+                            <div>
+                                <h5 class="d-inline mr-2">{{product.Quentity}} Quantity</h5>
+                                <br>
+                                <div class="rating">
+                                    <i style="color:orange;" class="fa fa-star"></i>
+                                    <i style="color:orange;" class="fa fa-star"></i>
+                                    <i style="color:orange;" class="fa fa-star"></i>
+                                    <i style="color:orange;" class="fa fa-star"></i>
+                                    <i style="color:orange;" class="fa fa-star-half"></i>
+                                </div>
+                                <div class="row ml-3 my-2">
+                                    <button class="btn   col-2 col-md-1 rounded-left"
+                                        style="border-bottom-left-radius:50%;border-top-left-radius:50%;background-color:#F68B1E;color:white;font-size: large;">-</button>
+                                    <div
+                                        class="border-0 rounded-left p-0  col-2 col-md-1  d-flex justify-content-center">
+                                        <input type="text"
+                                            class="form-control text-center rounded-0 input-number border-0  px-1"
+                                            value="{{product.Quentity}}" disabled min="1" #productQty>
+                                    </div>
+                                    <button class="btn  col-2 col-md-1 rounded-right"
+                                        style="border-bottom-right-radius:50%;border-top-right-radius:50%;background-color:#F68B1E;color:white;font-size: large;">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" mt-2 border-top"
+                        style="text-align: center;font-size: large;font-weight: bold;margin-right:6%;">
+                        <button class="btn  mx-3 mt-2 p-0" style="color:#F68B1E;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-heart" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg>
+
+
+                            Save </button>
+
+                        <button class="btn  mx-3 mt-2 p-0" style="color:#F68B1E;"> <i class="fa fa-trash"></i> Remove
+                            All</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="border rounded p-2">
+                    <h3 class="totalPrice">Total :</h3>
+                    <h4 class="ml-4">{{totalPrice}} EGP</h4>
+                </div>
+                <button class="btn btn-orange mt-3 w-100 p-2" [disabled]="products.length==0">Make Order</button>
+            </div>
+        </div>
+    </ng-template>
+</div>
