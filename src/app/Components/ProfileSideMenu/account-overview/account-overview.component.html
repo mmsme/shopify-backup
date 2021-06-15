@@ -1,16 +1,63 @@
-<h4>Account OverView</h4>
-<hr>
+<header class="-df -i-ctr -pvs -phm -bb -mh-48px">
+    <h1 class="-fs20 -m -elli">Account Overview</h1>
+</header>
+<div class="row">
+    <div class="column col col-6">
+        <div class="card c2">
+            <article class="card-b -fh -df -d-co">
+                <header class="row">
+                    <h2 class="-upp -fs14 -m -pam">Account details</h2><a class="btn _def _i _rnd -mhm"
+                        aria-label="Edit Account" [routerLink]="['edit']"><svg viewBox="0 0 24 24" class="ic" width="24"
+                            height="24">
+                            <use xlink:href="assets/images/i-icons.004b4c5e.svg#edit"></use>
+                        </svg></a>
+                </header>
+                <div class="-fg1 -pas">
+                    <p class="-fs16 -phs -pts">{{data.fname}}</p>
+                    <p class="-fs16 -phs -pts"> {{data.lname}}</p>
+                    <p class="-gy5 -pas -wb-ba">{{data.email}}</p>
+                </div><a class="btn _def -me-start -mam" [routerLink]="['changepass']">Change Password</a>
+            </article>
+        </div>
+    </div>
+    <div class="column col-6">
+        <div class="card c2">
+            <article class="card-b -fh -df -d-co">
+                <header class="row">
+                    <h2 class="-upp -fs14 -m -pam">Address Book</h2><a class="btn _def _i _rnd -mhm"
+                        aria-label="Edit Address" href="/customer/address/edit/5897548/"><svg viewBox="0 0 24 24"
+                            class="ic" width="24" height="24">
+                            <use xlink:href="https://www.jumia.com.eg/assets_he/images/i-icons.004b4c5e.svg#edit"></use>
+                        </svg></a>
+                </header>
+                <div class="-pvs">
+                    <p class="-fs16 -phm -pts">Your default shipping address:</p>
+                    <address class="-gy5 -pvs -phm -n -tal">
+                        <p>{{data.address}}</p>
+                        <!-- <p>Met salsel, Al Daqahliya</p>
+                        <p class="-ltr">+20 1100430384</p> -->
+                    </address>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
 <!--<div class="row">
-    <section class="card col col-6">
-        <div class="row">
-            <h4>Account Details</h4>
-            <i class="fas fa-pen" style="margin-left: 16px;"></i>
+    <div class="card card-block d-flex">
+        <div class="row card-title">
+    
+            <h2 class="col-9 align-left">Account Details</h2>
+            <i class="fas fa-pen col-2" style="margin-left: 16px;"></i>
+
         </div>
         <hr>
-        <label>First Name : </label>
+        <div class="card-body">
+            <label>First Name : </label>
         <label>Last Name : </label>
         <label>Email : </label>
-    </section>
+        </div>
+        </div>
     <section class="card col col-4">
         <h4>Address Book</h4>
         <hr>

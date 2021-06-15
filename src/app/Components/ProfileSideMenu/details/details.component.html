@@ -1,26 +1,26 @@
 <h1>Details</h1>
 <hr>
-<form [formGroup]="Registerform" (ngSubmit)="OnSubmit()">
+<form [formGroup]="Editform" (ngSubmit)="OnSubmit()">
     <div class="form-holder ">
         <label class="form-label">First Name</label>
-        <input type="text" class="form-control" formControlName="Fname" id="Fname">
-        <div *ngIf="Registerform.get('Fname')?.invalid && Registerform.get('Fname')?.touched">
+        <input type="text" class="form-control" formControlName="fname" id="fname">
+        <div *ngIf="Registerform.get('fname')?.invalid && Registerform.get('fname')?.touched">
             <small class="text-danger">First Name is
                 required minimum 3 characters</small>
         </div>
     </div>
     <div class="form-holder">
         <label class="form-label">Last Name</label>
-        <input type="text" class="form-control" formControlName="Lname" id="Lname">
-        <div *ngIf="Registerform.get('Lname')?.invalid && Registerform.get('Lname')?.touched">
+        <input type="text" class="form-control" formControlName="lname" id="lname">
+        <div *ngIf="Registerform.get('lname')?.invalid && Registerform.get('lname')?.touched">
             <small class="text-danger">Last Name is
                 required minimum 3 characters</small>
         </div>
     </div>
     <div class="form-holder">
         <label class="form-label">Email</label>
-        <input type="email" class="form-control" formControlName="Email" id="Email">
-        <div *ngIf="Registerform.get('Email')?.invalid && Registerform.get('Email')?.touched">
+        <input type="email" class="form-control" formControlName="email" id="email">
+        <div *ngIf="Registerform.get('email')?.invalid && Registerform.get('email')?.touched">
             <small class="text-danger">Email is required </small>
         </div>
     </div>

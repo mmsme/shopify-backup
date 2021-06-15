@@ -8,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   constructor() { }
-
+  flag: any=0;
   ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.flag = 1;
+    }
+  }
+  logout() {
+    localStorage.removeItem('token');
+    this.flag = 0;
   }
 
 }

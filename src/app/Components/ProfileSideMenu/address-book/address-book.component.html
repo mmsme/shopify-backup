@@ -1,14 +1,14 @@
 <h1>Address</h1>
 <hr>
-<form [formGroup]="resetform" (ngSubmit)="OnSubmit()">
+<form [formGroup]="Editform" (ngSubmit)="OnSubmit()">
     <div class="form-holder">
         <label class="form-label">Address</label>
-        <input type="text" class="form-control" formControlName="Address" id="Address">
-        <div *ngIf="resetform.get('Address')?.invalid && resetform.get('Address')?.touched">
+        <input type="text" class="form-control" formControlName="address" id="address">
+        <div *ngIf="Editform.get('address')?.invalid && Editform.get('address')?.touched">
             <small class="text-danger">Please Enter valid Address</small>
         </div>
     </div>
 
     <br>
-    <button type="submit" [disabled]="!resetform.valid">Submit</button>
+    <button type="submit" [disabled]="!Editform.valid">Save</button>
 </form>

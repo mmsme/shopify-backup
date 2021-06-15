@@ -20,19 +20,19 @@ import { ProfileComponent } from './Pages/profile/profile.component';
 import { CustomerRegisterComponent } from './Pages/Register/customer-register/customer-register.component';
 import { SellerRegisterComponent } from './Pages/Register/seller-register/seller-register.component';
 import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
+import { AuthGuard } from './Services/Auth/auth.guard';
 
 const routes: Routes = [
   {
     path: 'profile', component: ProfileComponent,
     children: [
-      { path: 'account-overview', component: AccountOverviewComponent },
       { path: "orders", component: OrdersComponent },
       { path: "inbox", component: InboxComponent },
       { path: "wishlist", component: SavedItemsComponent },
       { path: "edit", component: DetailsComponent },
       { path: "address", component: AddressBookComponent },
       { path: "changepass", component: ChangePassComponent },
-      { path: '**',redirectTo:'account-overview' }, 
+      { path: '**', component: AccountOverviewComponent }, 
       
     ]
   },
@@ -44,10 +44,9 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "notfound", component: NotFoundComponent },
   { path: 'productsubcategory', component: ProductSubCategoryComponent },
-  // { path: "productView", component: ProductViewContentComponent },
   { path: "forget-password", component: ForgetPasswordComponent },
   { path: "reset-password", component: ResetPasswordComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent , canActivate: [AuthGuard] },
   {path: 'product-card-vertical', component: ProductLayoutComponent},
   {path: '**', component: LoginComponent}
 ];

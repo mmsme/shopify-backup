@@ -1,18 +1,28 @@
 export interface Product {
-  Id: any;
+  ProductId: any;
   ProductName: string;
-  ProductDescription: string;
+  Description: string;
   Size: any;
   Color: any;
   UpdateAt: any;
   Brand: any;
   SubCategory: any;
   Promotion: any;
+  RangeDate: string;
   Rate: number;
   Weight: number;
-  Stock: number;
+  Quantity: number;
   Images: string[];
   Price: number;
-  Discount: number;
-  ProductSpecification: string;
+  Discount?: number;
+  Details: string;
+  Manufacture: any;
+  QuantitySealed: any;
+  CreatedAt: any;
+  UpdatedAt: any;
+  ProductImages: any;
+  ProductDetails: any;
+  BrandId: any;
+  SubCategotyId: any;
+  subCategory: any;
 }
