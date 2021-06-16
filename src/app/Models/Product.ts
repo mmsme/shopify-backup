@@ -2,7 +2,7 @@ export interface Product {
   Id: any;
   ProductName: string;
   ProductDescription: string;
-  Size: any;
+  Size: string;
   Color: any;
   UpdateAt: any;
   Brand: any;

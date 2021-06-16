@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <div class="d-flex no-gutters">
+    <div class="p-2">
+      <app-Filter (filter)="filteredDataUpdate($event)"></app-Filter>
+    </div>
+    <div class="p-2 container-fluid">
+      <app-product-layout [products]="products"></app-product-layout>
+    </div>
+  </div>
+</div>

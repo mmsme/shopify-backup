@@ -1,0 +1,34 @@
+.cart-container {
+  width: 500px;
+}
+
+.cart-header {
+  height: 9vh;
+  background-color: white;
+  box-shadow: 0 1px 15px rgba(51, 51, 51, 0.274);
+}
+
+.mat-icon-button {
+  margin: 0 1ex;
+}
+
+.mat-icon-button:focus {
+  outline: none;
+}
+
+.cardTitle {
+  font-size: x-large;
+  margin: 1ex 2ex;
+  color: rgba(51, 51, 51, 0.8);
+}
+
+.checkout {
+  background-color: #28df99;
+  color: white;
+  border-radius: 5em;
+}
+
+.vl {
+  height: 60%;
+  border-left: 2.5px solid rgba(51, 51, 51, 0.712);
+}

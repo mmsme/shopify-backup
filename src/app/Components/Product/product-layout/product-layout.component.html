@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="card-body">
-    <div class="flex-wrap grid-view d-flex justify-content-center" *ngIf="!isList">
+    <div class="flex-wrap grid-view d-flex justify-content-lg-start" *ngIf="!isList">
       <app-product-card class="m-1" *ngFor="let item of products" [product-name]="item.ProductName"
         [product-details]="item.ProductDescription" [rate]="item.Rate" [price]="item.Price" [image]="item.Images[0]"
         [discount]="item.Discount">

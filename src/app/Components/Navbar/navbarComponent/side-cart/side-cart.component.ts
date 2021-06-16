@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-side-cart',
   templateUrl: './side-cart.component.html',
-  styleUrls: ['./side-cart.component.css']
+  styleUrls: ['./side-cart.component.css'],
 })
 export class SideCartComponent implements OnInit {
+  @Input('drawer') drawer: any;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

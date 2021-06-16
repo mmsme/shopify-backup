@@ -1,0 +1,64 @@
+<div class="card text-left">
+  <div class="card-body">
+
+    <section id="reviews">
+      <label class="filter-label">Avg.Custom Review</label>
+      <div class="d-flex flex-column">
+        <bar-rating *ngFor="let rate of Rates; let i=index" class="rate-bar" [rate]="rate" [max]="5" [readOnly]="true">
+        </bar-rating>
+      </div>
+    </section>
+
+    <section id="brand">
+      <hr>
+      <label class="filter-label">Choose Brand</label>
+      <form [formGroup]="brandsForm">
+        <div formArrayName="brands" *ngFor="let item of brandsFormArray.controls; let i=index">
+          <mat-checkbox [color]="'warn'" [value]="Brands[i]" [formControlName]="i" (change)="filterByBrands()">
+            {{toCapital(Brands[i])}}
+          </mat-checkbox>
+        </div>
+      </form>
+    </section>
+
+    <section id="price">
+      <hr>
+
+      <label class="filter-label">Price</label>
+      <div>
+        <mat-slider class="w-100" min="min" max="max" step="step" value="value" [color]="'warn'"></mat-slider>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <mat-form-field color="warn">
+          <mat-label>Min</mat-label>
+          <input matInput color='warn' type="number">
+        </mat-form-field>
+
+        <mat-form-field color="warn">
+          <mat-label>Max</mat-label>
+          <input matInput type="number">
+        </mat-form-field>
+      </div>
+    </section>
+
+    <section id="color">
+      <hr>
+      <div class="d-flex flex-wrap">
+        <button mat-mini-fab class="color-circle" *ngFor="let color of Colors" [style.backgroundColor]="color"
+          (click)="filterByColor(color)"></button>
+      </div>
+    </section>
+
+    <section id="sizes">
+      <hr>
+      <label class="filter-label">Choose Sizes</label>
+      <form [formGroup]="sizesForm">
+        <div formArrayName="sizes" *ngFor="let item of sizesFormArray.controls; let i=index">
+          <mat-checkbox color="warn" [value]="Size[i]" [formControlName]="i" (change)="fiterBySizes()">
+            {{toCapital(Size[i])}}</mat-checkbox>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
