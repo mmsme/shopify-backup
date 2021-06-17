@@ -1,0 +1,68 @@
+<div class="wrapper">
+    <div class="inner">
+        <img src="../../assets/images/login&Register/image-1.png" alt="" class="image-1">
+        <h4 *ngIf="error">{{error}}</h4>
+        <form [formGroup]="loginForm" (ngSubmit)="OnSubmit()">
+            <h3>Login</h3>
+            <div class="form-holder">
+                <label class="form-label">E-mail: *</label>
+                <input type="text" class="form-control" formControlName="Email" id="Email">
+                <div *ngIf="loginForm.get('Email')?.invalid && loginForm.get('Email')?.touched">
+                    <small class="text-danger">Email is required</small>
+
+                </div>
+
+            </div>
+            <div class="form-holder form-group inner-addon right-addon">
+                <label class="form-label">Password: *</label>
+                <div class="input-group  mx-auto">
+                    <input type="password" [type]="showPassword ? 'text' : 'password'" class="form-control pwd-control"
+                        formControlName="Password" id="Password">
+                    <i alt="show" class="far fa-eye eye-show" (click)="showPassword = !showPassword"
+                        [class.hide]="!showPassword"></i>
+                    <i alt="hide" class="far fa-eye-slash eye-hide" (click)="showPassword = !showPassword"
+                        [class.hide]="showPassword"></i>
+                </div>
+                <div *ngIf="loginForm.get('Password')?.invalid && loginForm.get('Password')?.touched">
+                    <small class="text-danger">Password is required</small>
+
+                </div>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="RememberMe">
+                <label class="form-check-label" for="RememberMe">
+                    Remember Me
+                </label>
+            </div>
+            <button type="submit">Login</button>
+            <br>
+            <div class="text-center">Or Login With
+                <br><br>
+
+                <a style="color: #3b5998;" href="#!" class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"
+                    role="button"><i class="fab fa-facebook-f fa-lg"> </i></a>
+                <a style="color: #dd4b39;" href="#!" class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"
+                    role="button"><i class="fab fa-google fa-lg"></i></a>
+                <!-- <div *ngIf="user" class="card text-center">
+                    
+                    <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
+                    <div class="card-block">
+                        <h4 class="card-title">{{ user.name }}</h4>
+                        <p class="card-text">{{ user.email }}</p>
+                    </div>
+                    <div class="card-block">
+                        <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+                    </div>
+                </div> -->
+                <br><br>
+                <a href="/forget-password">Forget Password</a>
+                <br><br>
+                <span>To Create New Account
+                    <a href="/customer-Register" id="login"
+                        style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;">Click Here
+                    </a></span></div>
+        </form>
+        <img src="../../assets/images/login&Register/image-2.png" alt="" class="image-2">
+    </div>
+</div>

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Product } from 'src/app/Models/Product';
 import { ProductService } from 'src/app/Services/Product/product.service';
+import { SubCategoryService } from 'src/app/Services/SubCategory/SubCategory.service';
 
 @Component({
   selector: 'app-Filter',
@@ -9,6 +10,7 @@ import { ProductService } from 'src/app/Services/Product/product.service';
   styleUrls: ['./Filter.component.scss'],
 })
 export class FilterComponent implements OnInit {
+  @Input('sub-category') subCategory: any = null;
   @Input('products') products: Product[] = [];
   @Output('filter') filter = new EventEmitter<Product[]>();
   // all properties
@@ -24,7 +26,11 @@ export class FilterComponent implements OnInit {
   sizesForm: FormGroup;
   brandsForm: FormGroup;
 
-  constructor(public fb: FormBuilder, private productServices: ProductService) {
+  constructor(
+    public fb: FormBuilder,
+    private productServices: ProductService,
+    private subCategoryServices: SubCategoryService
+  ) {
     this.sizesForm = this.fb.group({
       sizes: fb.array([]),
     });
@@ -35,13 +41,19 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products = this.productServices.getProducts();
-    this.getAllBrands();
-    this.getAllSizes();
-    this.getAllColors();
+    console.log();
 
-    this.addCheckBoxes(this.sizesFormArray, this.Size);
-    this.addCheckBoxes(this.brandsFormArray, this.Brands);
+    if (this.subCategory == null) {
+    } else {
+      this.products = [...this.subCategory.products];
+
+      this.getAllBrands();
+      this.getAllSizes();
+      this.getAllColors();
+
+      this.addCheckBoxes(this.sizesFormArray, this.Size);
+      this.addCheckBoxes(this.brandsFormArray, this.Brands);
+    }
   }
 
   get sizesFormArray() {
@@ -60,8 +72,8 @@ export class FilterComponent implements OnInit {
 
   private getAllBrands() {
     this.products.forEach((p) => {
-      if (p.Brand != null || p.Brand != '') {
-        this.Brands.push(p.Brand.toLowerCase().trim());
+      if (p.manufacture != null && p.manufacture != '') {
+        this.Brands.push(p.manufacture.toLowerCase().trim());
       }
     });
 
@@ -70,8 +82,8 @@ export class FilterComponent implements OnInit {
 
   private getAllSizes() {
     this.products.forEach((p) => {
-      if (p.Size != null || p.Size != '') {
-        var sizeArray = p.Size.split(',');
+      if (p.size != null && p.size != '') {
+        var sizeArray = p.size.split(',');
         sizeArray.forEach((e) => {
           if (e != '') {
             this.Size.push(e.toLowerCase().trim());
@@ -85,8 +97,8 @@ export class FilterComponent implements OnInit {
 
   private getAllColors() {
     this.products.forEach((p) => {
-      if (p.Color != null || p.Color != '') {
-        var colorArray = p.Color.split(',');
+      if (p.color != null && p.color != '') {
+        var colorArray = p.color.split(',');
         colorArray.forEach((e: string) => {
           if (e != '') {
             this.Colors.push(e.toLowerCase().trim());
@@ -101,7 +113,9 @@ export class FilterComponent implements OnInit {
   public filterByColor(_color: string) {
     this.FilterResult = [];
     this.products.forEach((product) => {
-      var productsColor = (product.Color as string).split(',');
+      var productsColor = (product.color as string).split(',');
+      console.log('Colors', productsColor);
+
       productsColor.forEach((color: string) => {
         if (color.toLowerCase().trim() == _color) {
           this.FilterResult.push(product);
@@ -126,7 +140,7 @@ export class FilterComponent implements OnInit {
     if (brands_selected.length != 0) {
       brands_selected.forEach((brand) => {
         let res = this.products.filter((product) => {
-          return product.Brand.toLowerCase().trim() == brand;
+          return product.manufacture.toLowerCase().trim() == brand;
         });
 
         FilterRes = FilterRes.concat(res);
@@ -153,7 +167,7 @@ export class FilterComponent implements OnInit {
     if (selected_sizes.length != 0) {
       selected_sizes.forEach((size) => {
         this.products.forEach((product) => {
-          let productSizes = product.Size.split(',');
+          let productSizes = product.size.split(',');
           productSizes.forEach((psize) => {
             if (psize.toLowerCase().trim() == size) {
               myResult.push(product);

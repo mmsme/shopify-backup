@@ -24,13 +24,13 @@ export class ProductLayoutComponent implements OnInit {
 
   lowPriceSort() {
     this.products.sort((a, b) => {
-      return a.Price - b.Price;
+      return a.price - b.price;
     });
   }
 
   hightRatedSort() {
     this.products.sort((a, b) => {
-      return b.Rate - a.Rate;
+      return b.rate - a.rate;
     });
   }
 }

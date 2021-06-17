@@ -2,9 +2,10 @@
   <ul class="nav d-flex">
     <li class="nav-item dropdown" *ngFor="let item of Categories">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-        aria-expanded="false"><i class="{{item.icon}}"></i> {{item.main}}</a>
+        aria-expanded="false">{{item.name}}</a>
       <div class="shadow dropdown-menu">
-        <a class="dropdown-item" href="#!" *ngFor="let sub of item.sub">{{sub}}</a>
+        <a class="dropdown-item" *ngFor="let sub of item.subCategories"
+          [routerLink]="['subcategory', sub.subCategoryId]">{{sub.name}}</a>
       </div>
     </li>
   </ul>
@@ -12,6 +13,6 @@
 
 <div class="scrollbarSubNavBar d-flex d-md-none">
   <div class="item" *ngFor="let item of Categories">
-    {{item.main}}
+    {{item.name}}
   </div>
 </div>

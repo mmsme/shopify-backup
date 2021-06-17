@@ -42,10 +42,15 @@
     <div id="navbar-controls" class="d-none d-md-flex justify-content-between w-100">
       <app-search class="flex-shrink-1"></app-search>
       <div id="login" class="ml-3 d-flex">
+        <a class="nav-link1 d-flex align-content-center" [routerLink]="['/profile']">
         <button type="button" class="text-center btn login-btn float-md-right btn-sm">
           <span class="fas fa-user"></span>
         </button>
-        <span class="p-1 pt-3 ml-md-1 ml-lg-2" id="login-label">Login</span>
+      </a>
+      <a class="nav-link1 d-flex align-content-center" [routerLink]="['/login']">
+        <span class="p-1 pt-3 ml-md-1 ml-lg-2" id="login-label" *ngIf="flag==0">Login</span>
+      </a>
+      <span class="p-1 pt-3 ml-md-1 ml-lg-2" id="login-label" *ngIf="flag==1" (click)="logout()">Logout</span>
       </div>
       <app-side-cart class="ml-lg-5 ml-md-1 float-sm-right" [drawer]="drawer"></app-side-cart>
     </div>

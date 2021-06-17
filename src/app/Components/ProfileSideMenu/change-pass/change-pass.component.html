@@ -1,0 +1,23 @@
+<h1>Change Password</h1>
+<hr>
+<form [formGroup]="resetform" (ngSubmit)="OnSubmit()">
+    <div class="form-holder">
+        <label class="form-label">New Password</label>
+        <input type="password" class="form-control" formControlName="Password" id="Password">
+        <div *ngIf="resetform.get('Password')?.invalid && resetform.get('Password')?.touched">
+            <small class="text-danger">Password is
+                required minimum 8 characters and numbers</small>
+        </div>
+    </div>
+    <div class="form-holder">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" formControlName="CPassword" name="CPassword">
+        <div *ngIf="resetform.get('CPassword')?.invalid && resetform.get('CPassword')?.touched">
+            <small class="text-danger">Confirm Password is
+                required</small>
+        </div>
+    </div>
+
+    <br>
+    <button type="submit" [disabled]="!resetform.valid">Submit</button>
+</form>

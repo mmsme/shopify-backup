@@ -1,6 +1,6 @@
 .product-card {
   width: 220px;
-  height: 25em;
+  height: 26em;
   border: 1px solid rgba(51, 51, 51, 0.192);
   cursor: pointer;
   position: relative;
@@ -10,7 +10,7 @@
   position: relative;
   width: 90px;
   height: 28px;
-  background-color: #34f0a8;
+  background-color:#FEEE00;
   font-size: 2.5ex;
   padding: 1.9px;
   text-transform: uppercase;
@@ -20,11 +20,11 @@
   padding: 1px 1ex;
   font-size: large;
   font-weight: 500;
-  color: #2dd896;
+  color: #FEEE00;
 }
 
 img {
-  height: 11em;
+  height: 12em;
 }
 
 .product-info {

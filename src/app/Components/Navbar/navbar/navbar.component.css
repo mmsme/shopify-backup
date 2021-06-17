@@ -1,3 +1,7 @@
+a{
+  text-decoration: none;
+  color: #1c1427;
+}
 #top-bar {
   background-color: #1c1427;
 }
@@ -23,6 +27,7 @@
   transition: all 400ms;
   height: 2.5ex;
   padding-top: 25px;
+  cursor: pointer;
 }
 
 app-search {
@@ -31,7 +36,7 @@ app-search {
 }
 
 .navbar-brand:hover {
-  color: #28DF99;
+  color: #FEEE00;
 }
 
 @media only screen and (max-width: 770px) {
@@ -54,7 +59,7 @@ app-search {
   border-radius: 5em;
   font-size: 1.3rem;
   text-align: center;
-  background-color: #28DF99;
+  background-color: #FEEE00;
 }
 
 #login {
@@ -72,5 +77,5 @@ app-search {
 }
 
 .nav-link:hover {
-  color: #28DF99 !important;
+  color: #FEEE00 !important;
 }

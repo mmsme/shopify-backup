@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-12 card">
+                <div>
+                    <h4 class="menu-item"><a [routerLink]="['/profile']"><i class="far fa-user"></i>&nbsp;&nbsp;
+                            My Shopify Account</a></h4>
+                    <hr>
+                </div>
+                <div>
+                    <h4 class="menu-item"><a [routerLink]="['orders']"><i class="fas fa-box"></i>&nbsp;&nbsp;
+                            Orders</a>
+                    </h4>
+                </div>
+                <div>
+                    <h4 class="menu-item"><a [routerLink]="['inbox']"><i class="far fa-envelope"></i>&nbsp;&nbsp;
+                            Inbox</a>
+                    </h4>
+                </div>
+                <!-- <div>
+                    <h4 class="menu-item"><a [routerLink]="['']"><i class="far fa-edit"></i>&nbsp;&nbsp;
+                            Pending Reviews</a>
+                    </h4>
+                </div>
+                <div>
+                    <h4 class="menu-item"><a [routerLink]="['']"><i class="far fa-credit-card"></i>&nbsp;&nbsp; Shopify
+                            Credit</a>
+                    </h4>
+                </div> -->
+                <div>
+                    <h4 class="menu-item"> <a [routerLink]="['wishlist']"><i class="far fa-heart"></i>&nbsp;&nbsp;
+                            Saved Items</a>
+                    </h4>
+                </div>
+                <div>
+                    <h4 class="menu-item"> <a [routerLink]="['/history']"><i class="fas fa-history"></i>&nbsp;&nbsp;
+                            Recently Viewed</a>
+                    </h4>
+                    <hr>
+                </div>
+
+                <div>
+                    <h4 class="menu-item"><a [routerLink]="['edit']">Details</a></h4>
+                </div>
+                <div>
+                    <h4 class="menu-item"><a [routerLink]="['address']">Address Book</a></h4>
+                </div>
+                <div>
+                    <h4 class="menu-item"><a [routerLink]="['changepass']">Change Password</a></h4>
+                </div>
+                <button class="pl-5 pr-5 mt-3 mb-3 text-white btn btn-sm view-all-btn">LOGOUT</button>
+            </div>
+            <div class="col-lg-8 col-12 card">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<app-product-container></app-product-container>
+<app-Footer></app-Footer>

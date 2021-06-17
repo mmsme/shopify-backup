@@ -14,7 +14,7 @@
       <label class="filter-label">Choose Brand</label>
       <form [formGroup]="brandsForm">
         <div formArrayName="brands" *ngFor="let item of brandsFormArray.controls; let i=index">
-          <mat-checkbox [color]="'warn'" [value]="Brands[i]" [formControlName]="i" (change)="filterByBrands()">
+          <mat-checkbox color="warn" [formControlName]="i" (change)="filterByBrands()">
             {{toCapital(Brands[i])}}
           </mat-checkbox>
         </div>
@@ -35,7 +35,7 @@
           <input matInput color='warn' type="number">
         </mat-form-field>
 
-        <mat-form-field color="warn">
+        <mat-form-field [color]="'warn'">
           <mat-label>Max</mat-label>
           <input matInput type="number">
         </mat-form-field>
@@ -55,7 +55,7 @@
       <label class="filter-label">Choose Sizes</label>
       <form [formGroup]="sizesForm">
         <div formArrayName="sizes" *ngFor="let item of sizesFormArray.controls; let i=index">
-          <mat-checkbox color="warn" [value]="Size[i]" [formControlName]="i" (change)="fiterBySizes()">
+          <mat-checkbox color="warn" [formControlName]="i" (change)="fiterBySizes()">
             {{toCapital(Size[i])}}</mat-checkbox>
         </div>
       </form>
