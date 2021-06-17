@@ -28,8 +28,8 @@
 }
 
 .dropdown-item:hover{
-  background-color: #f68b1e;
-  color: #fff;
+  background-color: #FEEE00;
+  color: #1c1427;
 }
 
 .dropdown-menu{
@@ -65,7 +65,7 @@
 }
 
 .item:hover{
-  color: #f68b1e;
+  color: #FEEE00;
 }
 
 .scrollbarSubNavBar::-webkit-scrollbar{

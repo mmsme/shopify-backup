@@ -27,6 +27,7 @@ a{
   transition: all 400ms;
   height: 2.5ex;
   padding-top: 25px;
+  cursor: pointer;
 }
 
 app-search {
@@ -35,7 +36,7 @@ app-search {
 }
 
 .navbar-brand:hover {
-  color: #f68b1e;
+  color: #FEEE00;
 }
 
 @media only screen and (max-width: 770px) {
@@ -58,7 +59,7 @@ app-search {
   border-radius: 5em;
   font-size: 1.3rem;
   text-align: center;
-  background-color: #f68b1e;
+  background-color: #FEEE00;
 }
 
 #login {
@@ -76,5 +77,5 @@ app-search {
 }
 
 .nav-link:hover {
-  color: #f68b1e !important;
+  color: #FEEE00 !important;
 }

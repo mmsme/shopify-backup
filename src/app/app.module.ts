@@ -1,7 +1,7 @@
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -10,16 +10,26 @@ import { BarRatingModule } from 'ngx-bar-rating';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
-import {  ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import {GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+} from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from 'angularx-social-login';
 
 /**========================================================================
  *?                           My Components
  *========================================================================**/
-
+import { LandingComponent } from './Pages/Landing/Landing.component';
 import { SearchComponent } from './Components/Navbar/navbarComponent/search/search.component';
 import { SubNavbarComponent } from './Components/Navbar/navbarComponent/sub-navbar/sub-navbar.component';
 import { NavbarComponent } from './Components/Navbar/navbar/navbar.component';
@@ -33,6 +43,9 @@ import { CategoryCardComponent } from './Pages/Home/Categories/category-card/cat
 import { FooterComponent } from './Components/Footer/Footer.component';
 import { ProductCardVerticalComponent } from './Components/Product/product-card-vertical/product-card-vertical.component';
 import { ProductLayoutComponent } from './Components/Product/product-layout/product-layout.component';
+import { SearchPageComponent } from './Pages/Search-page/Search-page.component';
+import { FilterComponent } from './Components/Filter/Filter.component';
+import { SubCategoryPageComponent } from './Pages/sub-category-page/sub-category-page.component';
 
 import { ShoppingCartComponent } from './Components/shopping-cart/shopping-cart.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
@@ -62,6 +75,7 @@ import { ProductService } from './Services/Product/product.service';
   declarations: [
     AppComponent,
     SearchComponent,
+    LandingComponent,
     SubNavbarComponent,
     NavbarComponent,
     SideCartComponent,
@@ -74,6 +88,8 @@ import { ProductService } from './Services/Product/product.service';
     FooterComponent,
     ProductCardVerticalComponent,
     ProductLayoutComponent,
+    SearchPageComponent,
+    FilterComponent,
     ShoppingCartComponent,
     NotFoundComponent,
     AccountOverviewComponent,
@@ -92,11 +108,13 @@ import { ProductService } from './Services/Product/product.service';
     ResetPasswordComponent,
     ProductViewComponent,
     ProductSubCategoryComponent,
+    SubCategoryPageComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     CarouselModule,
@@ -106,26 +124,35 @@ import { ProductService } from './Services/Product/product.service';
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
-    SocialLoginModule
+    MatRadioModule,
+    MatSliderModule,
+    MatInputModule,
+    MatSidenavModule,
+    SocialLoginModule,
+    MatCheckboxModule,
   ],
-  providers: [ProductService, CategoryService,{
-    provide: 'SocialAuthServiceConfig',
-    useValue: {
-      autoLogin: true,
-      providers: [
+  providers: [
+    ProductService,
+    CategoryService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
               '38322060992-tn7u0jd3d66sh4l68djtaa96k447rjbe.apps.googleusercontent.com'
-            )
+            ),
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('204373248201567')
-          }
-        ]
+            provider: new FacebookLoginProvider('204373248201567'),
+          },
+        ],
       } as SocialAuthServiceConfig,
-    }],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

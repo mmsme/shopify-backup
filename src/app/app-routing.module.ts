@@ -1,58 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from './Components/not-found/not-found.component';
-import { ProductLayoutComponent } from './Components/Product/product-layout/product-layout.component';
-import { AccountOverviewComponent } from './Components/ProfileSideMenu/account-overview/account-overview.component';
-import { AddressBookComponent } from './Components/ProfileSideMenu/address-book/address-book.component';
-import { ChangePassComponent } from './Components/ProfileSideMenu/change-pass/change-pass.component';
-import { DetailsComponent } from './Components/ProfileSideMenu/details/details.component';
-import { InboxComponent } from './Components/ProfileSideMenu/inbox/inbox.component';
-import { OrdersComponent } from './Components/ProfileSideMenu/orders/orders.component';
-import { RecentlyViewedComponent } from './Components/ProfileSideMenu/recently-viewed/recently-viewed.component';
-import { SavedItemsComponent } from './Components/ProfileSideMenu/saved-items/saved-items.component';
-import { ShoppingCartComponent } from './Components/shopping-cart/shopping-cart.component';
-import { ForgetPasswordComponent } from './Pages/forget-password/forget-password.component';
 import { HomeComponent } from './Pages/Home/home/Home.component';
-import { LoginComponent } from './Pages/login/login.component';
-import { ProductSubCategoryComponent } from './Pages/product-sub-category/product-sub-category.component';
-import { ProductViewComponent } from './Pages/product-view/product-view.component';
-import { ProfileComponent } from './Pages/profile/profile.component';
-import { CustomerRegisterComponent } from './Pages/Register/customer-register/customer-register.component';
-import { SellerRegisterComponent } from './Pages/Register/seller-register/seller-register.component';
-import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
-import { AuthGuard } from './Services/Auth/auth.guard';
+import { LandingComponent } from './Pages/Landing/Landing.component';
+import { SearchPageComponent } from './Pages/Search-page/Search-page.component';
+import { SubCategoryPageComponent } from './Pages/sub-category-page/sub-category-page.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'profile', component: ProfileComponent,
+    path: 'home',
+    component: LandingComponent,
     children: [
-      { path: "orders", component: OrdersComponent },
-      { path: "inbox", component: InboxComponent },
-      { path: "wishlist", component: SavedItemsComponent },
-      { path: "edit", component: DetailsComponent },
-      { path: "address", component: AddressBookComponent },
-      { path: "changepass", component: ChangePassComponent },
-      { path: '**', component: AccountOverviewComponent }, 
-      
-    ]
+      { path: '', component: HomeComponent },
+      { path: 'search', component: SearchPageComponent },
+      { path: 'subcategory/:id', component: SubCategoryPageComponent },
+    ],
   },
-  { path: "productdetails", component: ProductViewComponent },
-  { path: "history", component: RecentlyViewedComponent },
-  { path: "seller-Register", component: SellerRegisterComponent },
-  { path: "customer-Register", component: CustomerRegisterComponent },
-  { path: "cart", component: ShoppingCartComponent},
-  { path: "profile", component: ProfileComponent },
-  { path: "notfound", component: NotFoundComponent },
-  { path: 'productsubcategory', component: ProductSubCategoryComponent },
-  { path: "forget-password", component: ForgetPasswordComponent },
-  { path: "reset-password", component: ResetPasswordComponent },
-  { path: 'home', component: HomeComponent , canActivate: [AuthGuard] },
-  {path: 'product-card-vertical', component: ProductLayoutComponent},
-  {path: '**', component: LoginComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

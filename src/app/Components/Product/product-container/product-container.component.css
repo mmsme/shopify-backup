@@ -1,5 +1,5 @@
 .card {
-  margin: 3.5ex 3ex 4ex 3ex;
+  margin: 3.5ex 0 4ex 0;
   padding-top: 1em;
 }
 
@@ -12,10 +12,11 @@
 
 .view-all-btn {
   font-size: x-larger;
-  background-color:#f68b1e;
+  background-color: #FEEE00;
   border-radius: 5rem;
   width: 14em;
   margin-top: 1ex;
+  color: #1C1427;
 }
 
 .owl-carousel .owl-item img {

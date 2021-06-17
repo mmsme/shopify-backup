@@ -45,6 +45,8 @@ export class ProductContainerComponent implements OnInit {
   constructor(private prodService: ProductService) {}
 
   ngOnInit() {
-    this.Products = this.prodService.getProducts();
+    this.prodService.getTopSales().subscribe((data) => {
+      this.Products = data;
+    });
   }
 }
