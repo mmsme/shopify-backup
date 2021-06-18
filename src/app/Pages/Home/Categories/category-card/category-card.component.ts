@@ -12,4 +12,8 @@ export class CategoryCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  ToCapital(word: string) {
+    return word?.charAt(0).toUpperCase() + word.slice(1);
+  }
 }

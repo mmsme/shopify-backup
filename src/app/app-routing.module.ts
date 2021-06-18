@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoryDetailsComponent } from './Pages/category-details/category-details.component';
 import { HomeComponent } from './Pages/Home/home/Home.component';
 import { LandingComponent } from './Pages/Landing/Landing.component';
 import { SearchPageComponent } from './Pages/Search-page/Search-page.component';
-import { SubCategoryPageComponent } from './Pages/sub-category-page/sub-category-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,7 +13,8 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'search', component: SearchPageComponent },
-      { path: 'subcategory/:id', component: SubCategoryPageComponent },
+      { path: 'search/:id', component: SearchPageComponent },
+      { path: 'category/:id', component: CategoryDetailsComponent },
     ],
   },
 ];

@@ -1,14 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~ngx-bar-rating/themes/br-default-theme';
+@import "~ngx-bar-rating/themes/br-default-theme";
 
 @font-face {
   font-family: lemon;
-  src: url('assets/fonts/LemonJellyPersonalUse-dEqR.ttf');
+  src: url("assets/fonts/LemonJellyPersonalUse-dEqR.ttf");
 }
 
+html,
 body {
-  background-color: rgb(243, 241, 241);
+  height: 100%;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

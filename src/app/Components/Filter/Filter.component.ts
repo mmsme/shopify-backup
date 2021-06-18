@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Product } from 'src/app/Models/Product';
 import { ProductService } from 'src/app/Services/Product/product.service';
@@ -40,20 +47,12 @@ export class FilterComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    console.log();
+  ngOnInit() {}
 
-    if (this.subCategory == null) {
-    } else {
-      this.products = [...this.subCategory.products];
-
-      this.getAllBrands();
-      this.getAllSizes();
-      this.getAllColors();
-
-      this.addCheckBoxes(this.sizesFormArray, this.Size);
-      this.addCheckBoxes(this.brandsFormArray, this.Brands);
-    }
+  ngOnChanges(changes: SimpleChanges) {
+    this.updateFilter(changes.products.currentValue);
+    // You can also use categoryId.previousValue and
+    // categoryId.firstChange for comparing old and new values
   }
 
   get sizesFormArray() {
@@ -183,7 +182,27 @@ export class FilterComponent implements OnInit {
     }
   }
 
-  toCapital(text: string): string {
-    return text?.charAt(0).toUpperCase() + text.slice(1);
+  updateFilter(data: Product[]) {
+    this.resetForms();
+    this.products = [...data];
+    this.getAllBrands();
+    this.getAllSizes();
+    this.getAllColors();
+
+    this.addCheckBoxes(this.sizesFormArray, this.Size);
+    this.addCheckBoxes(this.brandsFormArray, this.Brands);
   }
+
+  resetForms() {
+    this.sizesFormArray.clear();
+    this.brandsFormArray.clear();
+
+    this.Colors = [];
+    this.Brands = [];
+    this.Size = [];
+  }
+
+  // toCapital(text: string): string {
+  //   return text?.charAt(0).toUpperCase() + text.slice(1);
+  // }
 }
