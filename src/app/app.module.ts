@@ -15,7 +15,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
 import { HttpClientModule } from '@angular/common/http';
 import {
   SocialLoginModule,
@@ -45,8 +44,6 @@ import { ProductCardVerticalComponent } from './Components/Product/product-card-
 import { ProductLayoutComponent } from './Components/Product/product-layout/product-layout.component';
 import { SearchPageComponent } from './Pages/Search-page/Search-page.component';
 import { FilterComponent } from './Components/Filter/Filter.component';
-import { SubCategoryPageComponent } from './Pages/sub-category-page/sub-category-page.component';
-
 import { ShoppingCartComponent } from './Components/shopping-cart/shopping-cart.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { AccountOverviewComponent } from './Components/ProfileSideMenu/account-overview/account-overview.component';
@@ -65,11 +62,14 @@ import { ForgetPasswordComponent } from './Pages/forget-password/forget-password
 import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
 import { ProductViewComponent } from './Pages/product-view/product-view.component';
 import { ProductSubCategoryComponent } from './Pages/product-sub-category/product-sub-category.component';
+
 /**========================================================================
  *?                           My Services
  *========================================================================**/
 import { CategoryService } from './Services/Category/category.service';
 import { ProductService } from './Services/Product/product.service';
+import { SubCategoryService } from './Services/SubCategory/SubCategory.service';
+import { CategoryDetailsComponent } from './Pages/category-details/category-details.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +108,7 @@ import { ProductService } from './Services/Product/product.service';
     ResetPasswordComponent,
     ProductViewComponent,
     ProductSubCategoryComponent,
-    SubCategoryPageComponent,
+    CategoryDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -134,6 +134,7 @@ import { ProductService } from './Services/Product/product.service';
   providers: [
     ProductService,
     CategoryService,
+    SubCategoryService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

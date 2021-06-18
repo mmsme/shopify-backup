@@ -21,12 +21,14 @@
   <div class="card-body">
     <div class="flex-wrap grid-view d-flex justify-content-lg-start" *ngIf="!isList">
       <app-product-card class="m-1" *ngFor="let item of products" [product-name]="item.productName"
-        [product-details]="item.description" [rate]="item.rate" [price]="item.price" [discount]="item.discount">
+        [product-details]="item.description" [rate]="item.rate" [image]="item.productImages[0].image"
+        [price]="item.price" [discount]="item.discount">
       </app-product-card>
     </div>
     <div class="pl-1 pr-1 list-view" *ngIf="isList">
       <app-product-card-vertical *ngFor="let item of products" [product-name]="item.productName" [rate]="item.rate"
-        [price]="item.price" [details]="item.description"></app-product-card-vertical>
+        [price]="item.price" [image]="item.productImages[0].image" [details]="item.description">
+      </app-product-card-vertical>
     </div>
   </div>
 </div>
@@ -46,7 +48,8 @@
   <div class="card-body">
     <div class="flex-wrap grid-view d-flex justify-content-center">
       <app-product-card class="m-1" *ngFor="let item of products" [product-name]="item.productName"
-        [product-details]="item.description" [rate]="item.rate" [price]="item.price" [discount]="item.discount">
+        [product-details]="item.description" [image]="item.productImages[0].image" [rate]="item.rate"
+        [price]="item.price" [discount]="item.discount">
       </app-product-card>
     </div>
   </div>

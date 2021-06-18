@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Category } from 'src/app/Models/Category';
 
 @Injectable({
@@ -14,10 +15,14 @@ export class CategoryService {
   constructor(private http: HttpClient) {}
 
   getAllCategories(): any {
-    this.http.get(this.url).subscribe((data: Category[]) => {
-      this.Categories = [...data];
+    this.http.get(this.url).subscribe((_categories: Category[]) => {
+      this.Categories = [..._categories];
       this.updatedCategories.next([...this.Categories]);
     });
+  }
+
+  getCategoryById(id) {
+    return this.http.get(this.url + '/' + id);
   }
 
   updatedCategoryHandler() {

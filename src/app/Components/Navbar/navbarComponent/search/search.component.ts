@@ -1,5 +1,6 @@
 import { NgModel } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -15,6 +16,10 @@ export class SearchComponent implements OnInit {
     if (data.value.trim() === '' || data.invalid) {
       return;
     }
+
+    this.router.navigate(['/home/search'], {
+      queryParams: { key: data.value.trim() },
+    });
   }
 
   clearSearchBox(textbox: NgModel) {

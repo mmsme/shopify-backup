@@ -31,7 +31,10 @@
 
 .category-title {
   padding: 1ex 0;
+  font-weight: 500;
   font-size: 1.5em;
   color: rgba(0, 0, 0, 0.788);
   cursor: pointer;
+  width: 196px;
+  word-wrap: break-word;
 }

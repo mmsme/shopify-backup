@@ -16,7 +16,7 @@ export class ProductService {
   constructor(private HttpClient: HttpClient) {}
 
   getProducts(): any {
-    this.HttpClient.get('').subscribe((data) => {});
+    // this.HttpClient.get('').subscribe((data) => {});
   }
 
   updatedProductsHandler() {
@@ -29,42 +29,54 @@ export class ProductService {
   }
 
   getTopSales() {
-    return this.HttpClient.get<Product[]>(this.baseUrl + '/top-seales').pipe(
-      map((data: any) => {
-        return data.map((p: Product) => {
-          return {
-            productId: p.productId,
-            productName: p.productName,
-            description: p.description,
-            details: p.details,
-            manufacture: p.manufacture,
-            size: p.size,
-            color: p.color,
-            quantity: p.quantity,
-            Brand: p.Brand,
-            VerifiedBrandId: p.VerifiedBrandId,
-            weight: p.weight,
-            brandId: p.brandId,
-            productImages: 'http://localhost:5000/' + p.productImages[0].image,
-            quantitySealed: p.quantitySealed,
-            price: p.price,
-            rangeDate: p.rangeDate,
-            CreatedAt: p.CreatedAt,
-            UpdateAt: p.UpdateAt,
-            subCategotyId: p.subCategotyId,
-            subCategory: p.subCategory,
-            promotionId: p.promotionId,
-            promotions: p.promotions,
-            isdeletedBySeller: p.isdeletedBySeller,
-            isdeletedBySpoify: p.isdeletedBySpoify,
-            reviews: p.reviews,
-            views: p.views,
-            inventoryProducts: p.inventoryProducts,
-            discount: p.discount,
-            rate: p.rate,
-          };
-        });
-      })
-    );
+    return this.HttpClient.get<Product[]>(this.baseUrl + '/top-seales');
   }
+
+  searchByKey(key: string) {
+    return this.HttpClient.get<Product[]>(this.baseUrl + '/search?name=' + key);
+  }
+
+  // mapImages(_products: Product[]) {
+  //   console.log(_products);
+
+  //   return _products?.map((p) => {
+  //     return {
+  //       productId: p.productId,
+  //       productName: p.productName,
+  //       description: p.description,
+  //       details: p.details,
+  //       manufacture: p.manufacture,
+  //       size: p.size,
+  //       color: p.color,
+  //       quantity: p.quantity,
+  //       Brand: p.Brand,
+  //       VerifiedBrandId: p.VerifiedBrandId,
+  //       weight: p.weight,
+  //       brandId: p.brandId,
+  //       productImages: p.productImages.map((e) => {
+  //         return {
+  //           image: '',
+  //           isdeleted: false,
+  //           productId: 6,
+  //         };
+  //       }),
+  //       quantitySealed: p.quantitySealed,
+  //       price: p.price,
+  //       rangeDate: p.rangeDate,
+  //       CreatedAt: p.CreatedAt,
+  //       UpdateAt: p.UpdateAt,
+  //       subCategotyId: p.subCategotyId,
+  //       subCategory: p.subCategory,
+  //       promotionId: p.promotionId,
+  //       promotions: p.promotions,
+  //       isdeletedBySeller: p.isdeletedBySeller,
+  //       isdeletedBySpoify: p.isdeletedBySpoify,
+  //       reviews: p.reviews,
+  //       views: p.views,
+  //       inventoryProducts: p.inventoryProducts,
+  //       discount: p.discount,
+  //       rate: p.rate,
+  //     };
+  //   });
+  // }
 }

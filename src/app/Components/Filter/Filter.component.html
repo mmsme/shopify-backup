@@ -15,7 +15,7 @@
       <form [formGroup]="brandsForm">
         <div formArrayName="brands" *ngFor="let item of brandsFormArray.controls; let i=index">
           <mat-checkbox color="warn" [formControlName]="i" (change)="filterByBrands()">
-            {{toCapital(Brands[i])}}
+            {{Brands[i]}}
           </mat-checkbox>
         </div>
       </form>
@@ -56,7 +56,7 @@
       <form [formGroup]="sizesForm">
         <div formArrayName="sizes" *ngFor="let item of sizesFormArray.controls; let i=index">
           <mat-checkbox color="warn" [formControlName]="i" (change)="fiterBySizes()">
-            {{toCapital(Size[i])}}</mat-checkbox>
+            {{Size[i]}}</mat-checkbox>
         </div>
       </form>
     </section>
