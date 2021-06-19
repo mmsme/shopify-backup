@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Product } from 'src/app/Models/Product';
 import { ProductService } from 'src/app/Services/Product/product.service';
@@ -20,6 +13,7 @@ export class FilterComponent implements OnInit {
   @Input('sub-category') subCategory: any = null;
   @Input('products') products: Product[] = [];
   @Output('filter') filter = new EventEmitter<Product[]>();
+  ProductsInitValue: Product[] = [];
   // all properties
   Rates: number[] = [5, 4, 3, 2, 1];
   Brands: string[] = [];
@@ -27,8 +21,6 @@ export class FilterComponent implements OnInit {
   Size: string[] = [];
   maxPrice: number = 0;
   minPrice: number = 0;
-
-  FilterResult: Product[] = [];
 
   sizesForm: FormGroup;
   brandsForm: FormGroup;
@@ -47,12 +39,30 @@ export class FilterComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    //? set Products Repo To Filter it
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.updateFilter(changes.products.currentValue);
-    // You can also use categoryId.previousValue and
-    // categoryId.firstChange for comparing old and new values
+    this.ProductsInitValue = [...this.products];
+    console.log(this.ProductsInitValue);
+
+    this.getAllBrands();
+    this.getAllSizes();
+    this.getAllColors();
+
+    this.addCheckBoxes(this.sizesFormArray, this.Size);
+    this.addCheckBoxes(this.brandsFormArray, this.Brands);
+
+    // listen to Changes
+    this.productServices.updatedProductsHandler().subscribe((_products) => {
+      this.products = [..._products];
+      this.resetFilter();
+      this.getAllBrands();
+      this.getAllSizes();
+      this.getAllColors();
+
+      this.addCheckBoxes(this.sizesFormArray, this.Size);
+      this.addCheckBoxes(this.brandsFormArray, this.Brands);
+    });
   }
 
   get sizesFormArray() {
@@ -110,19 +120,22 @@ export class FilterComponent implements OnInit {
   }
 
   public filterByColor(_color: string) {
-    this.FilterResult = [];
-    this.products.forEach((product) => {
+    let FilterResult = [];
+    this.ProductsInitValue.forEach((product) => {
       var productsColor = (product.color as string).split(',');
       console.log('Colors', productsColor);
 
       productsColor.forEach((color: string) => {
         if (color.toLowerCase().trim() == _color) {
-          this.FilterResult.push(product);
+          FilterResult.push(product);
         }
       });
     });
-
-    this.filter.emit([...this.FilterResult]);
+    if (FilterResult.length != 0) {
+      this.filter.emit([...FilterResult]);
+    } else {
+      this.filter.emit(this.ProductsInitValue);
+    }
   }
 
   public filterByBrands() {
@@ -138,7 +151,7 @@ export class FilterComponent implements OnInit {
     let FilterRes: any[] = [];
     if (brands_selected.length != 0) {
       brands_selected.forEach((brand) => {
-        let res = this.products.filter((product) => {
+        let res = this.ProductsInitValue.filter((product) => {
           return product.manufacture.toLowerCase().trim() == brand;
         });
 
@@ -148,7 +161,7 @@ export class FilterComponent implements OnInit {
 
       this.filter.emit(FilterRes);
     } else {
-      this.filter.emit(this.products);
+      this.filter.emit(this.ProductsInitValue);
     }
   }
 
@@ -165,7 +178,7 @@ export class FilterComponent implements OnInit {
 
     if (selected_sizes.length != 0) {
       selected_sizes.forEach((size) => {
-        this.products.forEach((product) => {
+        this.ProductsInitValue.forEach((product) => {
           let productSizes = product.size.split(',');
           productSizes.forEach((psize) => {
             if (psize.toLowerCase().trim() == size) {
@@ -174,35 +187,23 @@ export class FilterComponent implements OnInit {
           });
         });
       });
-
       myResult = [...new Set(myResult)];
       this.filter.emit(myResult);
     } else {
-      this.filter.emit(this.products);
+      this.filter.emit(this.ProductsInitValue);
     }
   }
 
-  updateFilter(data: Product[]) {
-    this.resetForms();
-    this.products = [...data];
-    this.getAllBrands();
-    this.getAllSizes();
-    this.getAllColors();
-
-    this.addCheckBoxes(this.sizesFormArray, this.Size);
-    this.addCheckBoxes(this.brandsFormArray, this.Brands);
+  toCapital(text: string): string {
+    return text?.charAt(0).toUpperCase() + text.slice(1);
   }
 
-  resetForms() {
-    this.sizesFormArray.clear();
-    this.brandsFormArray.clear();
-
-    this.Colors = [];
+  resetFilter() {
     this.Brands = [];
     this.Size = [];
-  }
+    this.Colors = [];
 
-  // toCapital(text: string): string {
-  //   return text?.charAt(0).toUpperCase() + text.slice(1);
-  // }
+    this.sizesFormArray.clear();
+    this.brandsFormArray.clear();
+  }
 }
