@@ -134,7 +134,7 @@ export class FilterComponent implements OnInit {
     if (FilterResult.length != 0) {
       this.filter.emit([...FilterResult]);
     } else {
-      this.filter.emit(this.ProductsInitValue);
+      this.filter.emit([...this.ProductsInitValue]);
     }
   }
 
@@ -159,9 +159,9 @@ export class FilterComponent implements OnInit {
       });
       FilterRes = [...new Set(FilterRes)];
 
-      this.filter.emit(FilterRes);
+      this.filter.emit([...FilterRes]);
     } else {
-      this.filter.emit(this.ProductsInitValue);
+      this.filter.emit([...this.ProductsInitValue]);
     }
   }
 
@@ -188,9 +188,9 @@ export class FilterComponent implements OnInit {
         });
       });
       myResult = [...new Set(myResult)];
-      this.filter.emit(myResult);
+      this.filter.emit([...myResult]);
     } else {
-      this.filter.emit(this.ProductsInitValue);
+      this.filter.emit([...this.ProductsInitValue]);
     }
   }
 
