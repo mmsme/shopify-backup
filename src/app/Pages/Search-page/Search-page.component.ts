@@ -16,8 +16,6 @@ export class SearchPageComponent implements OnInit {
   subCategory: SubCategory;
   key: string;
   products: Product[] = [];
-  updatedProduct = new Subject<Product[]>();
-
   constructor(
     private subCategoryServices: SubCategoryService,
     private ar: ActivatedRoute,
@@ -33,7 +31,7 @@ export class SearchPageComponent implements OnInit {
         this.productServices.searchByKey(this.key).subscribe((data) => {
           console.log(data);
           this.products = [...data];
-          this.updatedProduct.next([...this.products]);
+          this.productServices.updatedProducts.next([...data]);
           this.isLoading = false;
         });
       }
@@ -46,7 +44,7 @@ export class SearchPageComponent implements OnInit {
           .subscribe((SubCategory) => {
             this.subCategory = SubCategory;
             this.products = [...this.subCategory.products];
-            this.updatedProduct.next([...this.products]);
+            this.productServices.updatedProducts.next([...this.products]);
             this.isLoading = false;
           });
       }
@@ -55,9 +53,5 @@ export class SearchPageComponent implements OnInit {
 
   filteredDataUpdate(data: any) {
     this.products = data;
-  }
-
-  getHandler() {
-    return this.updatedProduct.asObservable();
   }
 }

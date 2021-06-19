@@ -11,7 +11,7 @@ export class ProductService {
   private baseUrl: string = 'http://localhost:5000/api/product';
 
   private Products: Product[] = [];
-  private updatedProducts = new Subject<Product[]>();
+  updatedProducts = new Subject<Product[]>();
 
   constructor(private HttpClient: HttpClient) {}
 
