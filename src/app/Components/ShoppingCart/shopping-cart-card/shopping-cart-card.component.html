@@ -1,0 +1,57 @@
+<div class="card text-left">
+  <!-- <div class="card-header d-flex justify-content-end">
+    <button type="button" class="close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div> -->
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex flex-row">
+        <div class="p-view">
+          <img [src]="image" class="img-fluid" alt="">
+        </div>
+        <div>
+          <div class="product-info">
+            <div class="product-title">{{title}}</div>
+            <div class="product-features">{{info}}</div>
+            <div class="rating">
+              <bar-rating [(rate)]="rate" [max]="5" [readOnly]="true"></bar-rating>
+            </div>
+            <div class="price">${{price}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- -------------------------------- count -------------------------------- -->
+      <div class="d-flex flex-row">
+        <div>
+          <button type="button" class="add-btn btn" (click)="increaseCount()">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <div class="p-num d-flex justify-content-center align-items-center">
+          <p class="p-num-txt">{{count}}</p>
+        </div>
+        <div>
+          <button type="button" class="sub-btn btn" (click)="decreaseCount()">
+            <i class="fas fa-minus"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="d-flex justify-content-center align-items-center">
+      <button mat-flat-button (click)="like = !like">
+        <i class="far fa-heart fas-active" [ngClass]="{'fas fas-active': like}"></i>
+        <span *ngIf="!like">Save</span>
+        <span *ngIf="like">UnSave</span>
+      </button>
+      <div class="vertical"></div>
+      <button mat-flat-button (click)="delete()">
+        <i class="fas fa-trash"></i>
+        <span>Remove</span>
+      </button>
+    </div>
+  </div>
+</div>

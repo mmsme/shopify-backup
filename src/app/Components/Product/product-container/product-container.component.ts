@@ -18,6 +18,7 @@ export class ProductContainerComponent implements OnInit {
     pullDrag: true,
     dots: false,
     navSpeed: 100,
+    autoWidth: false,
     responsive: {
       0: {
         items: 1,

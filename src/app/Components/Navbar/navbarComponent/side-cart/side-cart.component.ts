@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SideCartComponent implements OnInit {
   @Input('drawer') drawer: any;
+  @Input('price') price: number = 0;
   constructor() {}
 
   ngOnInit() {}

@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   @Input('drawer') drawer: any;
+  @Input('cart-price') cartPrice: number = 0;
 
   constructor() {}
   flag: any = 0;
@@ -15,6 +16,7 @@ export class NavbarComponent implements OnInit {
       this.flag = 1;
     }
   }
+
   logout() {
     localStorage.removeItem('token');
     this.flag = 0;
