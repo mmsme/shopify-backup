@@ -24,6 +24,7 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider,
 } from 'angularx-social-login';
+import { Ng5SliderModule } from 'ng5-slider';
 
 /**========================================================================
  *?                           My Components
@@ -44,7 +45,6 @@ import { ProductCardVerticalComponent } from './Components/Product/product-card-
 import { ProductLayoutComponent } from './Components/Product/product-layout/product-layout.component';
 import { SearchPageComponent } from './Pages/Search-page/Search-page.component';
 import { FilterComponent } from './Components/Filter/Filter.component';
-import { ShoppingCartComponent } from './Components/shopping-cart/shopping-cart.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { AccountOverviewComponent } from './Components/ProfileSideMenu/account-overview/account-overview.component';
 import { AddressBookComponent } from './Components/ProfileSideMenu/address-book/address-book.component';
@@ -61,7 +61,9 @@ import { SellerRegisterComponent } from './Pages/Register/seller-register/seller
 import { ForgetPasswordComponent } from './Pages/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
 import { ProductViewComponent } from './Pages/product-view/product-view.component';
-import { ProductSubCategoryComponent } from './Pages/product-sub-category/product-sub-category.component';
+import { CategoryDetailsComponent } from './Pages/category-details/category-details.component';
+import { ShoppingCartComponent } from './Components/ShoppingCart/ShoppingCart.component';
+import { ShoppingCartCardComponent } from './Components/ShoppingCart/shopping-cart-card/shopping-cart-card.component';
 
 /**========================================================================
  *?                           My Services
@@ -69,7 +71,6 @@ import { ProductSubCategoryComponent } from './Pages/product-sub-category/produc
 import { CategoryService } from './Services/Category/category.service';
 import { ProductService } from './Services/Product/product.service';
 import { SubCategoryService } from './Services/SubCategory/SubCategory.service';
-import { CategoryDetailsComponent } from './Pages/category-details/category-details.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,6 @@ import { CategoryDetailsComponent } from './Pages/category-details/category-deta
     ProductLayoutComponent,
     SearchPageComponent,
     FilterComponent,
-    ShoppingCartComponent,
     NotFoundComponent,
     AccountOverviewComponent,
     AddressBookComponent,
@@ -107,8 +107,9 @@ import { CategoryDetailsComponent } from './Pages/category-details/category-deta
     ForgetPasswordComponent,
     ResetPasswordComponent,
     ProductViewComponent,
-    ProductSubCategoryComponent,
     CategoryDetailsComponent,
+    ShoppingCartComponent,
+    ShoppingCartCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,6 +131,7 @@ import { CategoryDetailsComponent } from './Pages/category-details/category-deta
     MatSidenavModule,
     SocialLoginModule,
     MatCheckboxModule,
+    Ng5SliderModule,
   ],
   providers: [
     ProductService,

@@ -4,8 +4,19 @@
     <section id="reviews">
       <label class="filter-label">Avg.Custom Review</label>
       <div class="d-flex flex-column">
-        <bar-rating *ngFor="let rate of Rates; let i=index" class="rate-bar" [rate]="rate" [max]="5" [readOnly]="true">
-        </bar-rating>
+        <!-- <bar-rating *ngFor="let rate of Rates; let i=index" (click)="filterByRate(rate)" class="rate-bar" [rate]="rate"
+          [max]="5" [readOnly]="true">
+        </bar-rating> -->
+        <mat-radio-group aria-labelledby="example-radio-group-label" (change)="filterByRate(selectedRate)"
+          class="example-radio-group" color="warn" [(ngModel)]="selectedRate">
+          <mat-radio-button class="example-radio-button" *ngFor="let item of Rates" value="{{ item }}">
+            <bar-rating [rate]="item" [max]="5" [readOnly]="true"></bar-rating>
+          </mat-radio-button>
+        </mat-radio-group>
+
+      </div>
+      <div *ngIf="selectedRate != 0">
+        get products with {{selectedRate}} rating
       </div>
     </section>
 
@@ -24,20 +35,22 @@
     <section id="price">
       <hr>
 
-      <label class="filter-label">Price</label>
-      <div>
-        <mat-slider class="w-100" min="min" max="max" step="step" value="value" [color]="'warn'"></mat-slider>
+      <div class="d-flex justify-content-between align-items-center">
+        <label class="filter-label">Price</label>
+        <button mat-button color="warn" (click)="filterByPrice()">Apply</button>
       </div>
 
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between mt-2">
         <mat-form-field color="warn">
           <mat-label>Min</mat-label>
-          <input matInput color='warn' type="number">
+          <input matInput color='warn' type="number" [formControl]="minControl">
+          <mat-error *ngIf="minControl.invalid">is invalid</mat-error>
         </mat-form-field>
 
         <mat-form-field [color]="'warn'">
           <mat-label>Max</mat-label>
-          <input matInput type="number">
+          <input matInput type="number" [formControl]="maxControl">
+          <mat-error *ngIf="maxControl.invalid">is invalid</mat-error>
         </mat-form-field>
       </div>
     </section>

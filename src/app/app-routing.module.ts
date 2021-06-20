@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CategoryDetailsComponent } from './Pages/category-details/category-details.component';
 import { HomeComponent } from './Pages/Home/home/Home.component';
 import { LandingComponent } from './Pages/Landing/Landing.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { CustomerRegisterComponent } from './Pages/Register/customer-register/customer-register.component';
 import { SearchPageComponent } from './Pages/Search-page/Search-page.component';
 
 const routes: Routes = [
@@ -17,6 +19,8 @@ const routes: Routes = [
       { path: 'category/:id', component: CategoryDetailsComponent },
     ],
   },
+  { path: 'login', component: LoginComponent },
+  { path: 'customer-Register', component: CustomerRegisterComponent },
 ];
 
 @NgModule({

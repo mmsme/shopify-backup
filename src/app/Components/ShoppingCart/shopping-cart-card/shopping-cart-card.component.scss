@@ -1,0 +1,143 @@
+.card-header {
+  border: 0;
+  padding: 0.5ex 1ex;
+  background-color: transparent;
+}
+
+button {
+  outline: none;
+}
+
+.card {
+  padding: 0;
+  margin-bottom: 1em;
+}
+
+.card-body {
+  padding: 2ex 2ex;
+}
+
+.add-btn,
+.sub-btn {
+  background-color: #feee00;
+  padding: 2px 10px;
+  width: 35px;
+}
+
+.p-num,
+.add-btn,
+.sub-btn {
+  height: 35px;
+}
+
+.add-btn:focus,
+.sub-btn:focus {
+  box-shadow: 0 0 0 3px #feed0085;
+}
+
+.add-btn {
+  border-top-left-radius: 5em;
+  border-bottom-left-radius: 5em;
+}
+
+.sub-btn {
+  border-bottom-right-radius: 5em;
+  border-top-right-radius: 5em;
+}
+
+.p-num {
+  background-color: #dfdfdf;
+  width: 60px;
+}
+
+.p-num p {
+  margin: 0;
+}
+
+.p-num-txt {
+  font-size: large;
+}
+
+.p-view {
+  width: 10em;
+  padding: 1ex;
+}
+
+.p-view img {
+  height: 7em;
+}
+
+.product-info {
+  width: 16em;
+  margin: 0 1.5ex;
+}
+
+.product-title {
+  font-weight: 600;
+  max-height: 50px;
+  font-size: 1.3em;
+  max-lines: 1;
+  margin: 0;
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+  text-transform: capitalize;
+  text-align: start;
+}
+
+.product-features {
+  padding-left: 1px;
+  margin: 0;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.623);
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+  text-transform: capitalize;
+  text-align: start;
+}
+
+.rating {
+  margin-top: -1ex;
+}
+
+.price {
+  font-size: 1.3em;
+  font-weight: 500;
+  margin: 1ex 0;
+}
+
+.vertical {
+  border-left: 1px solid rgba(0, 0, 0, 0.301);
+  height: 25px;
+}
+
+.card-footer {
+  margin: 0 2ex;
+  padding: 2px;
+  background-color: transparent;
+}
+
+.mat-flat-button {
+  width: 18em;
+  margin: 0 2ex;
+  color: #1c1427;
+  font-size: larger;
+}
+
+.fa-heart,
+.fa-trash {
+  margin-right: 2ex;
+}
+
+.fas-active {
+  color: #feee00;
+}

@@ -1,5 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Product } from 'src/app/Models/Product';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { SubCategoryService } from 'src/app/Services/SubCategory/SubCategory.service';
@@ -14,6 +20,7 @@ export class FilterComponent implements OnInit {
   @Input('products') products: Product[] = [];
   @Output('filter') filter = new EventEmitter<Product[]>();
   ProductsInitValue: Product[] = [];
+  selectedRate: number = 0;
   // all properties
   Rates: number[] = [5, 4, 3, 2, 1];
   Brands: string[] = [];
@@ -24,6 +31,8 @@ export class FilterComponent implements OnInit {
 
   sizesForm: FormGroup;
   brandsForm: FormGroup;
+  maxControl = new FormControl('', [Validators.required, Validators.min(1)]);
+  minControl = new FormControl('', [Validators.required, Validators.min(1)]);
 
   constructor(
     public fb: FormBuilder,
@@ -48,6 +57,8 @@ export class FilterComponent implements OnInit {
     this.getAllBrands();
     this.getAllSizes();
     this.getAllColors();
+    this.getMaxPrice();
+    this.getMinPrice();
 
     this.addCheckBoxes(this.sizesFormArray, this.Size);
     this.addCheckBoxes(this.brandsFormArray, this.Brands);
@@ -59,6 +70,8 @@ export class FilterComponent implements OnInit {
       this.getAllBrands();
       this.getAllSizes();
       this.getAllColors();
+      this.getMaxPrice();
+      this.getMinPrice();
 
       this.addCheckBoxes(this.sizesFormArray, this.Size);
       this.addCheckBoxes(this.brandsFormArray, this.Brands);
@@ -194,6 +207,18 @@ export class FilterComponent implements OnInit {
     }
   }
 
+  filterByRate(rate: number) {
+    let res = this.ProductsInitValue.filter((product) => {
+      return product.rate >= rate;
+    });
+
+    if (res.length != 0) {
+      this.filter.emit([...res]);
+    } else {
+      this.filter.emit([...this.ProductsInitValue]);
+    }
+  }
+
   toCapital(text: string): string {
     return text?.charAt(0).toUpperCase() + text.slice(1);
   }
@@ -202,8 +227,54 @@ export class FilterComponent implements OnInit {
     this.Brands = [];
     this.Size = [];
     this.Colors = [];
+    this.maxPrice = 0;
 
     this.sizesFormArray.clear();
     this.brandsFormArray.clear();
+  }
+
+  getMaxPrice() {
+    this.products.forEach((p) => {
+      if (p.price > this.maxPrice) {
+        this.maxPrice = p.price;
+      }
+    });
+
+    this.maxControl.setValue(this.maxPrice);
+  }
+
+  getMinPrice() {
+    this.minPrice = this.products[0].price;
+    this.products.forEach((p) => {
+      if (p.price < this.minPrice) {
+        this.minPrice = p.price;
+      }
+    });
+
+    this.minControl.setValue(this.minPrice);
+  }
+
+  filterByPrice() {
+    // check input
+    if (this.maxControl.invalid && this.minControl.invalid) {
+      return;
+    }
+
+    if (this.maxControl.value < this.minControl.value) {
+      this.maxControl.setErrors({ incorrect: true });
+      this.minControl.setErrors({ incorrect: true });
+      return;
+    }
+
+    let res = this.ProductsInitValue.filter((p) => {
+      return (
+        p.price >= this.minControl.value && p.price <= this.maxControl.value
+      );
+    });
+    if (res.length == 0) {
+      this.filter.emit([...this.ProductsInitValue]);
+    } else {
+      this.filter.emit([...res]);
+    }
   }
 }
