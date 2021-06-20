@@ -16,14 +16,7 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(private prodServ: ProductService) {}
 
-  ngOnInit() {
-    this.prodServ.getTopSales().subscribe((data) => {
-      this.products = data;
-      this.generateBill();
-      console.log(this.bill);
-      console.log(this.totalPrice);
-    });
-  }
+  ngOnInit() {}
 
   generateBill() {
     this.products.forEach((p) => {
