@@ -1,22 +1,23 @@
 <app-navbar></app-navbar>
-<!-- <div class="text-center border-0 shadow-sm card">
+<div class="text-center border-0 shadow-sm card">
   <div class="card-body">
     <div class="m-2 d-flex justify-content-center">
-      <div class="card-container-title">Best Sellers</div>
+      <div class="card-container-title">Recently View</div>
     </div>
     <owl-carousel-o [options]="customOptions">
       <ng-container *ngFor="let item of Products">
         <ng-template carouselSlide>
-          <app-product-card [product-name]="item.ProductName" [discount]='item.Discount' [price]="item.Price"
-            [rate]="item.Rate" [product-details]="item.ProductDescription" [image]="item.Images[0]">
+          <app-product-card [product-name]="item.productName" [discount]='item.discount' [price]="item.price" [rate]="item.rate"
+            [product-details]="item.description" [image]="item.productImages[0].image">
           </app-product-card>
         </ng-template>
       </ng-container>
     </owl-carousel-o>
   </div>
   <div class="d-flex justify-content-center">
-    <button type="button" class="pl-5 pr-5 mt-3 mb-3 text-white btn btn-lg view-all-btn">View All</button>
-  </div>
-</div> -->
+    <button type="button" class="pl-5 pr-5 mt-3 mb-3 btn btn-lg view-all-btn">View All</button>
+    </div>
+</div>
+
 
 <app-Footer></app-Footer>

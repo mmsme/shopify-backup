@@ -17,10 +17,8 @@ export class AddressBookComponent implements OnInit {
   });
   Editform: FormGroup;
   ngOnInit(): void {
-     let token = localStorage.getItem('token');
-    var splitted = token.split('.', 3); 
-    let id = splitted[2];
-     this.customerService.getCustomerData(id).subscribe(
+    
+     this.customerService.getCustomerData().subscribe(
        e => { e.applicationUser;
          console.log(e.applicationUser.fname);
           this.Editform = this.fb.group({

@@ -1,10 +1,26 @@
 <h2>Saved Items</h2>
 <hr>
-<div class="text-center">
+<div class="text-center" *ngIf="!Products">
     <img class="-mvs" src="./assets/saved.svg" height="100" width="100" alt="">
-        <h2 class="-pvs -fs16 -m">You haven’t saved an item yet!</h2>
-        <p class="-pvs -ws-pl -lh-15">Found something you like? Tap on the heart shaped icon next to the item to add it
-            to your wishlist! All your saved items will appear here.</p><a href="/" class="btn _prim -mtl">Continue
-            Shopping</a>
-    
+    <h2 class="-pvs -fs16 -m">You haven’t saved an item yet!</h2>
+    <p class="-pvs -ws-pl -lh-15">Found something you like? Tap on the heart shaped icon next to the item to add it
+        to your wishlist! All your saved items will appear here.</p><a href="/" class="btn _prim -mtl">Continue
+        Shopping</a>
+
+</div>
+<div class="text-center border-0 shadow-sm card" *ngIf="Products">
+    <div class="card-body">
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let item of Products">
+                <ng-template carouselSlide>
+                    <app-product-card [product-name]="item.productName" [discount]='item.discount' [price]="item.price"
+                        [rate]="item.rate" [product-details]="item.description" [image]="item.productImages[0].image">
+                    </app-product-card>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="button" class="pl-5 pr-5 mt-3 mb-3 btn btn-lg view-all-btn">View All</button>
+    </div>
 </div>

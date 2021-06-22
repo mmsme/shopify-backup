@@ -17,12 +17,12 @@ export class ChangePassComponent implements OnInit {
     Password: new FormControl('',[
       Validators.required,
       Validators.minLength(8),
-
+  
     ]),
     CPassword: new FormControl('',[
       Validators.required,
       Validators.minLength(8),
-
+  
     ]),
   });;
   ngOnInit(): void {
@@ -31,21 +31,23 @@ export class ChangePassComponent implements OnInit {
   OnSubmit() {
     this.route.queryParams.subscribe(r => {
       console.log(r)
-     this.token =  r.token ;
-     this.email = r.email ;
-     })
+      this.token = r.token;
+      this.email = r.email;
+    })
     let data = {
       Token: this.token,
       Email: this.email,
       Password: this.resetform.get("Password")?.value,
-      CPassword:this.resetform.get("CPassword")?.value
+      CPassword: this.resetform.get("CPassword")?.value
     }
     console.log(data)
     this.customerService.resetpassword(data).subscribe(
-      a => { alert("Your Password Changed Successfully") 
-      this.router.navigate([""]);
+      a => {
+        alert("Your Password Changed Successfully")
+        this.router.navigate([""]);
       }
-  )
-}
+    )
+   
+  }
 }
 

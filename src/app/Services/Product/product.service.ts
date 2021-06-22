@@ -1,6 +1,6 @@
 import { Product } from './../../Models/Product';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -9,11 +9,18 @@ import { map } from 'rxjs/operators';
 })
 export class ProductService {
   private baseUrl: string = 'http://localhost:5000/api/product';
-
+  
   private Products: Product[] = [];
   updatedProducts = new Subject<Product[]>();
-
+  
   constructor(private HttpClient: HttpClient) {}
+    httpOptions = {
+        headers : new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem("token")}`)
+      };
+      
+      httpOptions2 = {
+        headers: new HttpHeaders({'Content-Type': 'application/json'})
+      }
 
   getProducts(): any {
     // this.HttpClient.get('').subscribe((data) => {});
@@ -79,4 +86,14 @@ export class ProductService {
   //     };
   //   });
   // }
+
+
+  postRecentlyView(id: number) {
+    const newUrl ='http://localhost:23873/api/RecentlyViews/add-recently-view/'+id ;
+    return this.HttpClient.post<any>(newUrl,null,this.httpOptions);
+  }
+  GetRecentlyView() {
+    const newUrl ='http://localhost:23873/api/RecentlyViews/get-recently-view' ;
+    return this.HttpClient.get<any>(newUrl,this.httpOptions);
+  }
 }
