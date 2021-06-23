@@ -62,4 +62,8 @@ export class ProductService {
     const newUrl = this.baseUrl + 'RecentlyViews/get-recently-view';
     return this.HttpClient.get<any>(newUrl, this.httpOptions);
   }
+  AddReview(ProductId: any, body: any) {
+    const newUrl = 'http://localhost:23873/api/Review/' + ProductId;
+    return this.HttpClient.post<any>(newUrl, body, this.httpOptions);
+  }
 }

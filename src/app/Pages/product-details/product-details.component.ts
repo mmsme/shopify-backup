@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsService } from 'src/app/Services/Forms/forms.service';
 import { ProductService } from 'src/app/Services/Product/product.service';
-import { Product } from './../../Models/Product';
+import { Product } from '../../Models/Product';
 
 @Component({
-  selector: 'app-product-view',
-  templateUrl: './product-view.component.html',
-  styleUrls: ['./product-view.component.css'],
+  selector: 'app-product-details',
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.css'],
 })
-export class ProductViewComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit {
   product: Product;
   productview = document.getElementById('ProdDetail');
   imgSrc: string;
@@ -18,15 +18,15 @@ export class ProductViewComponent implements OnInit {
   
   
   ngOnInit(): void {
-    this.productserice.GetById(6).subscribe((a) => {
+    this.productserice.GetById(8).subscribe((a) => {
       this.product = a;
       this.imgSrc = a.productImages[0].image;
       console.log(a);
       this.productview.append(this.product.details);
     });
-    this.productserice.postRecentlyView(4).subscribe((b) => {
-      console.log(b);
-    });
+    // this.productserice.postRecentlyView(4).subscribe((b) => {
+    //   console.log(b);
+    // });
   }
   openImage(img : any) {
     console.log(img)

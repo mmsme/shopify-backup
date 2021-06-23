@@ -12,7 +12,9 @@ export class ProductLayoutComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.products);
+  }
 
   changeToList() {
     this.isList = true;

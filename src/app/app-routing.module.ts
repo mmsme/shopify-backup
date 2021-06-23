@@ -18,12 +18,14 @@ import { RecentlyViewedComponent } from './Components/ProfileSideMenu/recently-v
 import { SavedItemsComponent } from './Components/ProfileSideMenu/saved-items/saved-items.component';
 
 import { ForgetPasswordComponent } from './Pages/forget-password/forget-password.component';
-import { ProductViewComponent } from './Pages/product-view/product-view.component';
 import { ProfileComponent } from './Pages/profile/profile.component';
 import { SellerRegisterComponent } from './Pages/Register/seller-register/seller-register.component';
 import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
 import { AuthGuard } from './Services/Auth/auth.guard';
 import { ShoppingCartComponent } from './Components/ShoppingCart/ShoppingCart.component';
+import { AddReviewComponent } from './Components/add-review/add-review.component';
+import { ProductDetailsComponent } from './Pages/product-details/product-details.component';
+import { ProductviewComponent } from './Pages/productview/productview.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -43,10 +45,6 @@ const routes: Routes = [
         component: RecentlyViewedComponent,
         canActivate: [AuthGuard],
       },
-      {
-        path: 'productdetails',
-        component: ProductViewComponent,
-      },
       { path: 'cart', component: ShoppingCartComponent },
     ],
   },
@@ -64,12 +62,18 @@ const routes: Routes = [
       { path: '**', component: AccountOverviewComponent },
     ],
   },
+  {
+    path: 'history',
+    component: RecentlyViewedComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'login', component: LoginComponent },
   { path: 'seller-Register', component: SellerRegisterComponent },
   { path: 'customer-Register', component: CustomerRegisterComponent },
   { path: 'notfound', component: NotFoundComponent },
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'comment', component: AddReviewComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
