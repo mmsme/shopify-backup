@@ -25,7 +25,6 @@ import { ResetPasswordComponent } from './Pages/reset-password/reset-password.co
 import { AuthGuard } from './Services/Auth/auth.guard';
 import { ShoppingCartComponent } from './Components/ShoppingCart/ShoppingCart.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
@@ -34,35 +33,46 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'search', component: SearchPageComponent },
-      { path: 'subcategory/:id', component: CategoryDetailsComponent ,canActivate: [AuthGuard]},
-      { path: "history", component: RecentlyViewedComponent,canActivate: [AuthGuard] },
-      { path: "productdetails", component: ProductViewComponent,canActivate: [AuthGuard] },
-      { path: "cart", component: ShoppingCartComponent},
+      { path: 'search/:id', component: SearchPageComponent },
+      {
+        path: 'category/:id',
+        component: CategoryDetailsComponent,
+      },
+      {
+        path: 'history',
+        component: RecentlyViewedComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'productdetails',
+        component: ProductViewComponent,
+      },
+      { path: 'cart', component: ShoppingCartComponent },
     ],
-  },{
-    path: 'profile', component: ProfileComponent,canActivate: [AuthGuard],
-    children: [
-      { path: "orders", component: OrdersComponent },
-      { path: "inbox", component: InboxComponent },
-      { path: "wishlist", component: SavedItemsComponent },
-      { path: "edit", component: DetailsComponent },
-      { path: "address", component: AddressBookComponent },
-      { path: "changepass", component: ChangePassComponent },
-      { path: '**', component: AccountOverviewComponent }, 
-      
-    ]
   },
-  {path: 'login', component: LoginComponent},
-  { path: "seller-Register", component: SellerRegisterComponent },
-  { path: "customer-Register", component: CustomerRegisterComponent },
-  { path: "notfound", component: NotFoundComponent },
-  { path: "forget-password", component: ForgetPasswordComponent },
-  { path: "reset-password", component: ResetPasswordComponent },
-  
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'orders', component: OrdersComponent },
+      { path: 'inbox', component: InboxComponent },
+      { path: 'wishlist', component: SavedItemsComponent },
+      { path: 'edit', component: DetailsComponent },
+      { path: 'address', component: AddressBookComponent },
+      { path: 'changepass', component: ChangePassComponent },
+      { path: '**', component: AccountOverviewComponent },
+    ],
+  },
+  { path: 'login', component: LoginComponent },
+  { path: 'seller-Register', component: SellerRegisterComponent },
+  { path: 'customer-Register', component: CustomerRegisterComponent },
+  { path: 'notfound', component: NotFoundComponent },
+  { path: 'forget-password', component: ForgetPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-

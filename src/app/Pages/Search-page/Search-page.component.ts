@@ -24,16 +24,16 @@ export class SearchPageComponent implements OnInit {
 
   ngOnInit() {
     this.ar.queryParams.subscribe((url: any) => {
-      console.log(url?.key);
-
       if (url?.key) {
         this.key = url.key;
-        this.productServices.searchByKey(this.key).subscribe((data) => {
-          console.log(data);
-          this.products = [...data];
-          this.productServices.updatedProducts.next([...data]);
-          this.isLoading = false;
-        });
+      }
+
+      if (url.type && url.type == 'top_deals') {
+        this.loadTopDeals();
+      }
+
+      if (url.type && url.type == 'top_sales') {
+        this.loadTopSales();
       }
     });
 
@@ -53,5 +53,30 @@ export class SearchPageComponent implements OnInit {
 
   filteredDataUpdate(data: any) {
     this.products = data;
+  }
+
+  search() {
+    this.productServices.searchByKey(this.key).subscribe((data) => {
+      console.log(data);
+      this.products = [...data];
+      this.productServices.updatedProducts.next([...data]);
+      this.isLoading = false;
+    });
+  }
+
+  loadTopSales() {
+    this.productServices.getTopDeals().subscribe((data) => {
+      this.products = [...data];
+      this.productServices.updatedProducts.next([...data]);
+      this.isLoading = false;
+    });
+  }
+
+  loadTopDeals() {
+    this.productServices.getTopDeals().subscribe((data) => {
+      this.products = [...data];
+      this.productServices.updatedProducts.next([...data]);
+      this.isLoading = false;
+    });
   }
 }

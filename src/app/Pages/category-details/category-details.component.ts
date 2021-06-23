@@ -18,10 +18,11 @@ export class CategoryDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.ar.snapshot.params.id;
-    this.categoryServices
-      .getCategoryById(id)
-      .subscribe((_category: any) => (this.category = _category));
+    this.ar.params.subscribe((url) => {
+      this.categoryServices
+        .getCategoryById(url.id)
+        .subscribe((_category: any) => (this.category = _category));
+    });
   }
 
   showSubCategory(id: any) {

@@ -7,7 +7,8 @@ import { Product } from 'src/app/Models/Product';
   providedIn: 'root',
 })
 export class SubCategoryService {
-  private url = 'http://localhost:5000/api/SubCategory';
+  private port = 5000;
+  private url = `http://localhost:${this.port}/api/SubCategory`;
 
   constructor(private http: HttpClient) {}
 

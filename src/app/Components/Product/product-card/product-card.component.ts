@@ -18,10 +18,14 @@ export class ProductCardComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isHaveSale();
+  }
 
   isHaveSale() {
-    if (this.discount != 0 || this.discount != undefined) {
+    if (this.discount == 0) {
+      this.sale = false;
+    } else {
       this.sale = true;
     }
   }
