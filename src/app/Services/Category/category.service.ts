@@ -8,7 +8,7 @@ import { Category } from 'src/app/Models/Category';
   providedIn: 'root',
 })
 export class CategoryService {
-  private url = 'http://localhost:5000/api/Category';
+  private url = 'http://localhost:23873/api/Category';
   private Categories: Category[] = [];
   private updatedCategories = new Subject<Category[]>();
 

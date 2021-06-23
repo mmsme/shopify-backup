@@ -60,7 +60,6 @@ import { CustomerRegisterComponent } from './Pages/Register/customer-register/cu
 import { SellerRegisterComponent } from './Pages/Register/seller-register/seller-register.component';
 import { ForgetPasswordComponent } from './Pages/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
-import { ProductViewComponent } from './Pages/product-view/product-view.component';
 import { CategoryDetailsComponent } from './Pages/category-details/category-details.component';
 import { ShoppingCartComponent } from './Components/ShoppingCart/ShoppingCart.component';
 import { ShoppingCartCardComponent } from './Components/ShoppingCart/shopping-cart-card/shopping-cart-card.component';
@@ -71,6 +70,9 @@ import { ShoppingCartCardComponent } from './Components/ShoppingCart/shopping-ca
 import { CategoryService } from './Services/Category/category.service';
 import { ProductService } from './Services/Product/product.service';
 import { SubCategoryService } from './Services/SubCategory/SubCategory.service';
+import { AddReviewComponent } from './Components/add-review/add-review.component';
+import { ProductDetailsComponent } from './Pages/product-details/product-details.component';
+import { ProductviewComponent } from './Pages/productview/productview.component';
 
 @NgModule({
   declarations: [
@@ -106,10 +108,12 @@ import { SubCategoryService } from './Services/SubCategory/SubCategory.service';
     SellerRegisterComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
-    ProductViewComponent,
+    ProductDetailsComponent,
     CategoryDetailsComponent,
     ShoppingCartComponent,
     ShoppingCartCardComponent,
+    AddReviewComponent,
+    ProductviewComponent,
   ],
   imports: [
     BrowserModule,

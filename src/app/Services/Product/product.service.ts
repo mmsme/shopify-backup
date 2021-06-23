@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ProductService {
-  private baseUrl: string = 'http://localhost:5000/api/product';
+  private baseUrl: string = 'http://localhost:23873/api/product';
   
   private Products: Product[] = [];
   updatedProducts = new Subject<Product[]>();
@@ -95,5 +95,9 @@ export class ProductService {
   GetRecentlyView() {
     const newUrl ='http://localhost:23873/api/RecentlyViews/get-recently-view' ;
     return this.HttpClient.get<any>(newUrl,this.httpOptions);
+  }
+  AddReview(ProductId:any , body:any) {
+    const newUrl ='http://localhost:23873/api/Review/'+ProductId ;
+    return this.HttpClient.post<any>(newUrl,body,this.httpOptions);
   }
 }

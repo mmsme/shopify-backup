@@ -7,7 +7,7 @@ import { Product } from 'src/app/Models/Product';
   providedIn: 'root',
 })
 export class SubCategoryService {
-  private url = 'http://localhost:5000/api/SubCategory';
+  private url = 'http://localhost:23873/api/SubCategory';
 
   constructor(private http: HttpClient) {}
 
