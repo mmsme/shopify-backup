@@ -63,13 +63,13 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.Service.GetCartItems().subscribe(
-    //   a => {
-    //     console.log(a)
-    //     this.cart = a;
-    //     this.cartItem = a.cartItems
-    //   }
-    // )
+    this.Service.GetCartItems().subscribe(
+      a => {
+        console.log(a)
+        this.cart = a;
+        this.cartItem = a.cartItems
+      }
+    )
   }
 
   delete(productId: any) {

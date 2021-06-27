@@ -12,7 +12,7 @@ import { FormsService } from 'src/app/Services/Forms/forms.service';
 export class CustomerRegisterComponent implements OnInit {
   public showPassword: boolean | any;
    public showPassword1: boolean|any;
-  
+  data: any;
   constructor(public customerService: FormsService, private router: Router) { }
   ngOnInit(): void {
   }
@@ -27,8 +27,10 @@ export class CustomerRegisterComponent implements OnInit {
   });
   OnSubmit() {
       this.customerService.postCustomerData(this.Registerform.value).subscribe(
-        result => {
-          console.log("success", this.Registerform)
+        result => {this.data=result
+          localStorage.setItem('token', this.data.token)
+          localStorage.setItem('email',this.data.email)
+          
           alert("your data Saved Successfuly");
           this.router.navigate(['']);
         })

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { CategoryDetailsComponent } from './Pages/category-details/category-details.component';
 import { HomeComponent } from './Pages/Home/home/Home.component';
 import { LandingComponent } from './Pages/Landing/Landing.component';
@@ -41,8 +41,8 @@ const routes: Routes = [
         component: CategoryDetailsComponent,
       },
       {
-        path: 'history',
-        component: RecentlyViewedComponent,
+        path: 'productdetails/:id',
+        component: ProductDetailsComponent,
         canActivate: [AuthGuard],
       },
       { path: 'cart', component: ShoppingCartComponent },

@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ProductService {
-  private port = 5000;
+  private port = 23873;
   private baseUrl: string = `http://localhost:${this.port}/api`;
 
   private Products: Product[] = [];
@@ -54,12 +54,12 @@ export class ProductService {
   }
 
   postRecentlyView(id: number) {
-    const newUrl = this.baseUrl + 'RecentlyViews/add-recently-view/' + id;
+    const newUrl = this.baseUrl + '/RecentlyViews/add-recently-view/' + id;
     return this.HttpClient.post<any>(newUrl, null, this.httpOptions);
   }
 
   GetRecentlyView() {
-    const newUrl = this.baseUrl + 'RecentlyViews/get-recently-view';
+    const newUrl = this.baseUrl + '/RecentlyViews/get-recently-view';
     return this.HttpClient.get<any>(newUrl, this.httpOptions);
   }
   AddReview(ProductId: any, body: any) {

@@ -9,8 +9,8 @@ export class FormsService {
 
   constructor(private http: HttpClient) {}
 
-  readonly Url = 'http://localhost:5000/api/Authentication/';
-  readonly customerUrl = 'http://localhost:5000/api/';
+  readonly Url = 'http://localhost:23873/api/Authentication/';
+  readonly customerUrl = 'http://localhost:23873/api/';
   token: string = JSON.stringify(localStorage.getItem('token'));
   public get loggedIn(): boolean {
     return localStorage.getItem('token') !== null;

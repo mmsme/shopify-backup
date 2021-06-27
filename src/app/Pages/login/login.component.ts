@@ -50,6 +50,7 @@ signInWithFB(): void {
     this.customerService.login(this.loginForm.value).subscribe(
       a => {
         localStorage.setItem("token", a.token),
+          localStorage.setItem("email", a.email),
            this.router.navigate(["home"]);
     },
      e => console.log(JSON.stringify( e)) 

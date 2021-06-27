@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -16,10 +17,11 @@ export class ProductCardComponent implements OnInit {
 
   sale: boolean = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.isHaveSale();
+    console.log(this.id)
   }
 
   isHaveSale() {
@@ -28,5 +30,9 @@ export class ProductCardComponent implements OnInit {
     } else {
       this.sale = true;
     }
+  }
+  openProduct(id: any) {
+    console.log("id: ",id)
+    this.router.navigate(['/home/productdetails/'+this.id])
   }
 }

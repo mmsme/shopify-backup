@@ -21,7 +21,7 @@
       <ng-container *ngFor="let item of products">
         <ng-template carouselSlide style="width: auto;">
           <app-product-card [product-name]="item.productName" [discount]='item.discount' [price]="item.price"
-            [rate]="item.rate" [product-details]="item.description" [image]="item.productImages[0].image">
+            [id]="item.productId"  [rate]="item.rate" [product-details]="item.description" [image]="item.productImages[0].image">
           </app-product-card>
         </ng-template>
       </ng-container>

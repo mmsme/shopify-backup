@@ -9,49 +9,49 @@
     <h1>You Cart Is Empty</h1>
   </div>
   <ng-template #showProducts>
-    <!-- *ngIf="cart!=null" -->
     <div class="row">
+<!-- *ngIf="cart!=null" -->
       <div class="col-12 col-md-8">
         <h2 class="title">Your Cart</h2>
-        <!-- *ngFor="let item of cartItem;let i = index"  -->
-        <div class="border shadow-sm  p-3 rounded mt-3">
+      <div class="border shadow-sm  p-3 rounded mt-3" *ngFor="let item of cartItem;let i = index">
           <div class="row">
             <div class="col-4 ">
-              <!-- {{item.product.productImages[0].image}} -->
-              <img src="https://pngimg.com/uploads/xbox/xbox_PNG101377.png" class="img-fluid" style="height:10rem;" />
+              <!--  -->
+              <img src="{{item.product.productImages[0].image}}" class="img-fluid" style="height:10rem;" />
             </div>
             <div class="col-8">
-              <!-- {{item.product.productName}} -->
-              <h3 class="mb-4">Xbox</h3>
-              <!-- {{item.totalPrice}} -->
-              <h5 class="price"> 2500 EGP</h5>
+              <!--  -->
+              <h3 class="mb-4">{{item.product.productName}}</h3>
+              <!--  -->
+              <h5 class="price"> {{item.totalPrice}} EGP</h5>
               <div>
-                <!-- <h5 class="d-inline mr-2">{{item.quantity}} </h5> -->
+                <h5 class="d-inline mr-2">{{item.quantity}} </h5>
                 <br>
                 <div class="rating">
                   <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
-                    <li [ngClass]="{'selected': true}">
+                    <li [ngClass]="{'selected': (star <= item.product.rate)}">
                       <i class="fa fa-star"></i>
                     </li>
                   </ul>
                   <!-- {{item.product.rate}} -->
-                  <span>5</span>
                 </div>
                 <div class="row ml-3 my-2">
                   <button class="btn   col-2 col-md-1 rounded-left"
-                    style="border-bottom-left-radius:50%;border-top-left-radius:50%;background-color: #feee00;color:white;font-size: large;">-</button>
+                    style="border-bottom-left-radius:50%;border-top-left-radius:50%;background-color: #feee00;color:white;font-size: large;"
+                    (click)="min(item.quantity,i,item.product.productId)">-</button>
                   <div class="border-0 rounded-left p-0  col-1 col-md-1  d-flex justify-content-center">
-                    <input type="text" class="form-control text-center offset-2 rounded-0 input-number border-0  px-1"
-                      style="width: 35px;" value="{{5}}" disabled min="1" #productQty>
+                    <input type="text" class="form-control text-center offset-3 rounded-0 input-number border-0  "
+                      style="width: 35px;padding-right: 10px;" value="{{item.quantity}}" disabled min="1" #productQty>
                   </div>
                   <button class="btn offset-1 col-2 col-md-1 rounded-right"
-                    style="border-bottom-right-radius:50%;border-top-right-radius:50%;background-color: #feee00;color:white;font-size: large;">+</button>
+                    style="border-bottom-right-radius:50%;border-top-right-radius:50%;background-color: #feee00;color:white;font-size: large;"
+                     (click)="plus(item.quantity,i,item.product.productId)">+</button>
                 </div>
               </div>
             </div>
           </div>
           <div class=" mt-2 border-top" style="text-align: center;font-size: large;font-weight: bold;margin-right:6%;">
-            <button class="btn  mx-3 mt-2 p-0" style="color: #feee00;">
+            <button class="btn  mx-3 mt-2 p-0" style="color: #feee00;" (click)="Fav(item.product.productId)">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
                 viewBox="0 0 16 16">
                 <path
@@ -60,7 +60,8 @@
 
               Save </button>
 
-            <button class="btn  mx-3 mt-2 p-0" style="color: #feee00;"> <i class="fa fa-trash"></i> Remove
+            <button class="btn  mx-3 mt-2 p-0" style="color: #feee00;" (click)="delete(item.cartItemId)"> <i
+                class="fa fa-trash"></i> Remove
               All</button>
           </div>
         </div>
@@ -68,7 +69,7 @@
       <div class="col-12 col-md-4">
         <div class="border rounded p-2">
           <h3 class="totalPrice">Total :</h3>
-          <h4 class="ml-4">50 EGP</h4>
+          <h4 class="ml-4">{{cart.cost}} EGP</h4>
         </div>
         <!-- <button class="btn btn-orange mt-3 w-100 p-2" >Make Order</button> -->
         <!-- [disabled]="cartItem.length==0" -->

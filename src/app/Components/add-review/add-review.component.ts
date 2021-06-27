@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-review',
@@ -8,8 +9,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./add-review.component.scss']
 })
 export class AddReviewComponent implements OnInit {
-
-  constructor(private service: ProductService) { }
+@Input('id') id;
+  constructor(private service: ProductService,private router: Router) { }
  
    reviewForm = new FormGroup({
      comment: new FormControl(),
@@ -19,10 +20,12 @@ export class AddReviewComponent implements OnInit {
   }
   OnSubmit() {
     console.log(this.reviewForm.value)
-    this.service.AddReview(8,this.reviewForm.value).subscribe(
+    this.service.AddReview(this.id,this.reviewForm.value).subscribe(
       a => {
         console.log(a);
-        this.ngOnInit();
+        //  this.router.navigate(['/home/productdetails/'+this.id]);
+        location.reload
+  
       }
     )
   }

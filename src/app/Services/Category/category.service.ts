@@ -8,7 +8,7 @@ import { Category } from 'src/app/Models/Category';
   providedIn: 'root',
 })
 export class CategoryService {
-  private port = 5000;
+  private port = 23873;
   private url = `http://localhost:${this.port}/api/Category`;
   private Categories: Category[] = [];
   private updatedCategories = new Subject<Category[]>();
