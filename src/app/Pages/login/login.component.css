@@ -58,10 +58,10 @@ img {
 .image-1 {
     position: absolute;
     bottom: -2px;
-    left: -350px;
+    left: -440px;
     z-index: 99;
     height: 60%;
-    width: 80%;
+    width: 100%;
 }
 .image-2 {
     position: absolute;

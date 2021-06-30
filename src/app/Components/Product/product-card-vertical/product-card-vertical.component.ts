@@ -18,5 +18,7 @@ export class ProductCardVerticalComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.price)
+  }
 }

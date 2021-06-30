@@ -81,7 +81,7 @@ export class ProductContainerComponent implements OnInit {
   }
 
   viewMore() {
-    this.route.navigate(['/home/search'], {
+    this.route.navigate(['/customer/search'], {
       queryParams: { type: type[this.typeNum] },
     });
   }

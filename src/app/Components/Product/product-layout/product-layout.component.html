@@ -20,9 +20,9 @@
   </div>
   <div class="card-body">
     <div class="flex-wrap grid-view d-flex justify-content-lg-start" *ngIf="!isList">
-      <app-product-card class="m-1" *ngFor="let item of products" [product-name]="item.productName"
-        [product-details]="item.description" [rate]="item.rate" [image]="item.productImages[0].image"
-        [price]="item.price" [discount]="item.discount">
+      <app-product-card class="m-1" *ngFor="let item of products" [product-name]="products[0].productName"
+        [product-details]="products[0].description" [rate]="products[0].rate" [image]="products[0].productImages[0].image"
+        [price]="products[0].price" [discount]="products[0].discount">
       </app-product-card>
     </div>
     <div class="pl-1 pr-1 list-view" *ngIf="isList">

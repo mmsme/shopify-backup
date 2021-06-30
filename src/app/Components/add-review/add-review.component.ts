@@ -23,7 +23,7 @@ export class AddReviewComponent implements OnInit {
     this.service.AddReview(this.id,this.reviewForm.value).subscribe(
       a => {
         console.log(a);
-        //  this.router.navigate(['/home/productdetails/'+this.id]);
+        //  this.router.navigate(['/customer/productdetails/'+this.id]);
         location.reload
   
       }

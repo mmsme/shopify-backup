@@ -43,7 +43,9 @@ signInWithFB(): void {
     ]),
     Password: new FormControl('',[
       Validators.required,
-      Validators.minLength(3),
+      Validators.minLength(8),
+      Validators.pattern(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.).{8,32}$/),
+ 
     ]),
   });
   OnSubmit() {
@@ -51,23 +53,12 @@ signInWithFB(): void {
       a => {
         localStorage.setItem("token", a.token),
           localStorage.setItem("email", a.email),
-           this.router.navigate(["home"]);
+           this.router.navigate(["customer"]);
     },
      e => console.log(JSON.stringify( e)) 
     )
    }
-  //   this.apiService.userAuthintication(username,password).subscribe((data:any)=>{
-    //     localStorage.setItem('userToken',data.access_token);
-    //     if(username=="" || username=="" || username=="" || username=="")
-    //       this.router.navigate(["/adminpanel"]);
-    //     else 
-    //       this.router.navigate(["/dashboard"]);
-    //   },
-    //  (err:HttpErrorResponse)=>{
-      //   this.isLoginError =true;
-      // }
-      // );    
-      //}
+
       
     }
     

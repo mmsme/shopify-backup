@@ -11,9 +11,8 @@ import { FormsService } from 'src/app/Services/Forms/forms.service';
 export class ChangePassComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private customerService:FormsService,private router: Router) { }
-  token: any;
-  email: any;
-  resetform: FormGroup =new FormGroup({
+
+  form: FormGroup =new FormGroup({
     Password: new FormControl('',[
       Validators.required,
       Validators.minLength(8),
@@ -24,27 +23,21 @@ export class ChangePassComponent implements OnInit {
       Validators.minLength(8),
   
     ]),
-  });;
+  });
   ngOnInit(): void {
     
   }
   OnSubmit() {
-    this.route.queryParams.subscribe(r => {
-      console.log(r)
-      this.token = r.token;
-      this.email = r.email;
-    })
     let data = {
-      Token: this.token,
-      Email: this.email,
-      Password: this.resetform.get("Password")?.value,
-      CPassword: this.resetform.get("CPassword")?.value
+      Token: localStorage.getItem("token"),
+      Email: localStorage.getItem("email"),
+      Password: this.form.get("Password")?.value,
+      CPassword: this.form.get("CPassword")?.value
     }
     console.log(data)
-    this.customerService.resetpassword(data).subscribe(
+    this.customerService.EditCustomerPassword(data).subscribe(
       a => {
         alert("Your Password Changed Successfully")
-        this.router.navigate([""]);
       }
     )
    

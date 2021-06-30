@@ -1,9 +1,8 @@
-<app-navbar></app-navbar>
-
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-12 card">
+<!--<section class="row">
+    <div class="p-2 col-12 col-md-4">
+        <div class="card text-left">
+            <div class="card-body">
+        <section>
                 <div>
                     <h4 class="menu-item"><a [routerLink]="['/profile']"><i class="far fa-user" style="color: #FEEE00;"></i>&nbsp;&nbsp;
                             My Shopify Account</a></h4>
@@ -19,28 +18,20 @@
                             Inbox</a>
                     </h4>
                 </div>
-                <!-- <div>
-                    <h4 class="menu-item"><a [routerLink]="['']"><i class="far fa-edit"></i>&nbsp;&nbsp;
-                            Pending Reviews</a>
-                    </h4>
-                </div>
                 <div>
-                    <h4 class="menu-item"><a [routerLink]="['']"><i class="far fa-credit-card"></i>&nbsp;&nbsp; Shopify
-                            Credit</a>
-                    </h4>
-                </div> -->
-                <div>
-                    <h4 class="menu-item"> <a [routerLink]="['wishlist']"><i class="far fa-heart" style="color: #FEEE00;"></i>&nbsp;&nbsp;
+                    <h4 class="menu-item"> <a [routerLink]="['/wishlist']"><i class="far fa-heart"
+                                style="color: #FEEE00;"></i>&nbsp;&nbsp;
                             Saved Items</a>
                     </h4>
                 </div>
                 <div>
-                    <h4 class="menu-item"> <a [routerLink]="['/history']"><i class="fas fa-history" style="color: #FEEE00;"></i>&nbsp;&nbsp;
+                    <h4 class="menu-item"> <a [routerLink]="['/history']"><i class="fas fa-history"
+                                style="color: #FEEE00;"></i>&nbsp;&nbsp;
                             Recently Viewed</a>
                     </h4>
                     <hr>
                 </div>
-
+                
                 <div>
                     <h4 class="menu-item"><a [routerLink]="['edit']">Details</a></h4>
                 </div>
@@ -50,15 +41,77 @@
                 <div>
                     <h4 class="menu-item"><a [routerLink]="['changepass']">Change Password</a></h4>
                 </div>
-            
-            </div>
+                </section>
+                </div>
+                </div>
+                
+                <div class="p-2 container-fluid col-12 col-md-8">
+                    <div class="card text-left">
+                        <div class="card-body">
+                            <section class="product-list col-md-8 mb-3">
+                                <section class="mb-1">
+                                    <router-outlet></router-outlet>
+                                </section>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </section>
+                <app-product-container [title]="'Top Deals'" [type]="1"></app-product-container> -->
+                
+                
+                <section class="p-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="card text-left col-12 col-lg-3">
+                                <div class="card-body">
+                                    <section>
+                                        <div>
+                                            <h4 class="menu-item"><a [routerLink]="['/profile']"><i class="far fa-user"
+                                                        style="color: #FEEE00;"></i>
+                                                    My Shopify Account</a></h4>
+                                            <hr>
+                                        </div>
+                                        <div>
+                                            <h4 class="menu-item"><a [routerLink]="['orders']"><i class="fas fa-box"
+                                                        style="color: #FEEE00;"></i>&nbsp;&nbsp;
+                                                    Orders</a>
+                                        </h4>
+                                    </div>
+                                    <div>
+                                        <h4 class="menu-item"><a [routerLink]="['inbox']"><i class="far fa-envelope" style="color: #FEEE00;"></i>&nbsp;&nbsp;
+                                                Inbox</a>
+                                        </h4>
+                                    </div>
+                                    <div>
+                                        <h4 class="menu-item"> <a [routerLink]="['/wishlist']"><i class="far fa-heart" style="color: #FEEE00;"></i>&nbsp;&nbsp;
+                                                Saved Items</a>
+                                        </h4>
+                                    </div>
+                                    <div>
+                                        <h4 class="menu-item"> <a [routerLink]="['/history']"><i class="fas fa-history" style="color: #FEEE00;"></i>&nbsp;&nbsp;
+                                                Recently Viewed</a>
+                                        </h4>
+                                        <hr>
+                                    </div>
+                        
+                                    <div>
+                                        <h4 class="menu-item"><a [routerLink]="['edit']">Details</a></h4>
+                                    </div>
+                                    <div>
+                                        <h4 class="menu-item"><a [routerLink]="['address']">Address Book</a></h4>
+                                    </div>
+                                    <div>
+                                        <h4 class="menu-item"><a [routerLink]="['changepass']">Change Password</a></h4>
+                                    </div>
+                                </section>
+                                </div>
+                        </div>
             <div class="col-lg-8 col-12 card">
                 <router-outlet></router-outlet>
             </div>
         </div>
     </div>
 </section>
-
-
-<app-product-container></app-product-container>
-<app-Footer></app-Footer>
+<app-product-container [title]="'Top Deals'" [type]="1"></app-product-container>

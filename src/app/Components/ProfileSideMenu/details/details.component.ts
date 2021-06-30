@@ -27,16 +27,13 @@ export class DetailsComponent implements OnInit {
   }
   
   OnSubmit() {
-    // console.log("aaaaaa", this.Registerform)
-    // if (this.step == 2) {
-    //   this.customerService.postCustomerData(this.Registerform.value).subscribe(
-    //     result => {
-    //       console.log("sssssss", this.Registerform)
-    //       alert("your data Saved Successfuly");
-    //       this.router.navigate(['']);
-    //     })
-    // }
-  }
+      this.customerService.EditCustomerData(this.Editform.value).subscribe(
+        result => {
+          alert("your data Saved Successfuly");
+          this.ngOnInit();
+        })
+    }
+  
 
 
 }

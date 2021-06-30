@@ -27,7 +27,7 @@
 
       <ul class="mt-2 ml-1 mr-2 mr-auto navbar-nav mt-lg-0 d-block d-sm-none">
         <li class="nav-item">
-          <a class="nav-link d-flex align-content-center" href="#">
+          <a class="nav-link d-flex align-content-center" [routerLink]="['/login']">
             <i class="mt-1 mr-1 fas fa-user"></i> <span>Login</span></a>
         </li>
         <li class="nav-item">
@@ -42,7 +42,7 @@
     <div id="navbar-controls" class="d-none d-md-flex justify-content-between w-100">
       <app-search class="flex-shrink-1"></app-search>
       <div id="login" class="ml-3 d-flex">
-        <a class="nav-link1 d-flex align-content-center" [routerLink]="['/profile']">
+        <a class="nav-link1 d-flex align-content-center" [routerLink]="['/customer/profile']">
           <button type="button" class="text-center btn login-btn float-md-right btn-sm">
             <span class="fas fa-user"></span>
           </button>

@@ -26,6 +26,6 @@ export class CategoryDetailsComponent implements OnInit {
   }
 
   showSubCategory(id: any) {
-    this.router.navigateByUrl('/home/search/' + id);
+    this.router.navigateByUrl('/customer/search/' + id);
   }
 }

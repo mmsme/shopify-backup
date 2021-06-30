@@ -21,7 +21,7 @@ export class ProductCardComponent implements OnInit {
 
   ngOnInit() {
     this.isHaveSale();
-    console.log(this.id)
+    console.log(this.price)
   }
 
   isHaveSale() {
@@ -33,6 +33,6 @@ export class ProductCardComponent implements OnInit {
   }
   openProduct(id: any) {
     console.log("id: ",id)
-    this.router.navigate(['/home/productdetails/'+this.id])
+    this.router.navigate(['/customer/productdetails/'+this.id])
   }
 }

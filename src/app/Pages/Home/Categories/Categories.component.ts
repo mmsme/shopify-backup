@@ -26,6 +26,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   showCategory(id: any) {
-    this.router.navigateByUrl('/home/category/' + id);
+    this.router.navigateByUrl('/customer/category/' + id);
   }
 }

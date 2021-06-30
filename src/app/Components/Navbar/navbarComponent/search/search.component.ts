@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
       return;
     }
 
-    this.router.navigate(['/home/search'], {
+    this.router.navigate(['/customer/search'], {
       queryParams: { key: data.value.trim() },
     });
   }

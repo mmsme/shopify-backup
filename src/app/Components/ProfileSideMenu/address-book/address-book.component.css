@@ -27,7 +27,7 @@ h4 {
     margin-bottom: 15px;
 }
 .form-control:focus,.form-select:focus {
-    border: 1px solid #f68b1e;
+    border: 1px solid#FEEE00;
 }
 button {
     border: none;
@@ -40,7 +40,7 @@ button {
     align-items: center;
     justify-content: center;
     padding: 0;
-    background: #f68b1e;
+    background:#FEEE00;
     color: #fff;
     text-transform: uppercase;
     font-family: "Muli-SemiBold";

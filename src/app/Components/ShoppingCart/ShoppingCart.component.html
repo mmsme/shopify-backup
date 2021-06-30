@@ -69,7 +69,8 @@
       <div class="col-12 col-md-4">
         <div class="border rounded p-2">
           <h3 class="totalPrice">Total :</h3>
-          <h4 class="ml-4">{{cart.cost}} EGP</h4>
+          <h4 class="ml-4" *ngIf="cart.cost!=null">{{cart.cost}} EGP</h4>
+          <h4 class="ml-4"> 0 EGP</h4>
         </div>
         <!-- <button class="btn btn-orange mt-3 w-100 p-2" >Make Order</button> -->
         <!-- [disabled]="cartItem.length==0" -->
