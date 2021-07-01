@@ -295,7 +295,7 @@
                                                 <div class="comment-text w-100">
                                                     <h6 class="font-medium">{{item.customer.applicationUser.fname }}
                                                         {{item.customer.applicationUser.lname}}</h6>
-                                                        <div class="rating" id="raiting" class="d-flex mt-2 mb-0">
+                                                        <div class="rating" id="raiting" class="d-flex mt-2 mb-0" *ngIf="commentflag==true&&editflag==false">
                                                             <ul class="list-inline rating-list" *ngFor="let star of stars"
                                                             style="display: inline-block">
                                                             <li [ngClass]="{'selected': (star <= item.review)}">
@@ -305,7 +305,19 @@
                                                     </div>
                                                     <span class="m-b-15 d-block" *ngIf="commentflag==true&&editflag==false">{{item.comment}}</span>
                                                     <form [formGroup]="reviewForm1" (ngSubmit)="OnSubmit()">
-                                                        <div *ngIf="editflag==true">
+                                                        <div *ngIf="editflag==true&&item.customer.applicationUser.email==email">
+                                                            <div class="rating">
+                                                                <input type="radio" formControlName="review" value="5" id="5">
+                                                                <label for="5">☆</label>
+                                                                <input type="radio" formControlName="review" value="4" id="4">
+                                                                <label for="4">☆</label>
+                                                                <input type="radio" formControlName="review" value="3" id="3">
+                                                                <label for="3">☆</label>
+                                                                <input type="radio" formControlName="review" value="2" id="2">
+                                                                <label for="2">☆</label>
+                                                                <input type="radio" formControlName="review" value="1" id="1">
+                                                                <label for="1">☆</label>
+                                                            </div>
                                                             <div class="comment-area"> <textarea formControlName="comment" class="form-control"
                                                                     [(placeholder)]="item.comment" rows="4"></textarea> </div>
                                                             <div class="comment-btns mt-2 mb-2">

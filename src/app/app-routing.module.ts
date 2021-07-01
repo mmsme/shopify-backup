@@ -23,7 +23,6 @@ import { SellerRegisterComponent } from './Pages/Register/seller-register/seller
 import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
 import { AuthGuard } from './Services/Auth/auth.guard';
 import { ShoppingCartComponent } from './Components/ShoppingCart/ShoppingCart.component';
-import { AddReviewComponent } from './Components/add-review/add-review.component';
 import { ProductDetailsComponent } from './Pages/product-details/product-details.component';
 
 const routes: Routes = [
@@ -36,7 +35,7 @@ const routes: Routes = [
       { path: 'search', component: SearchPageComponent },
       { path: 'search/:id', component: SearchPageComponent },
       { path: 'category/:id',component: CategoryDetailsComponent},
-      {path: 'productdetails/:id',component: ProductDetailsComponent,canActivate: [AuthGuard]},
+      {path: 'productdetails/:id',component: ProductDetailsComponent},
       { path: 'cart', component: ShoppingCartComponent },
   {
     path: 'profile',
@@ -58,10 +57,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'notfound', component: NotFoundComponent },
-  { path: 'comment', component: AddReviewComponent }
 ],},
 { path: 'login', component: LoginComponent },
-{ path: 'seller-Register', component: SellerRegisterComponent },
+// { path: 'seller-Register', component: SellerRegisterComponent },
 { path: 'customer-Register', component: CustomerRegisterComponent },
 { path: 'forget-password', component: ForgetPasswordComponent },
 { path: 'reset-password', component: ResetPasswordComponent },

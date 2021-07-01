@@ -54,7 +54,7 @@ export class ProductDetailsComponent implements OnInit {
         }
       }
       );
-      this.productserice.postRecentlyView(this.product.productId).subscribe(
+      this.productserice.postRecentlyView(this.id).subscribe(
         b => {
           console.log(b);
         },
@@ -67,17 +67,13 @@ export class ProductDetailsComponent implements OnInit {
       }
               reviewForm1= new FormGroup({
                  comment: new FormControl(),
-                 review: new FormControl(this.rate),
+                 review: new FormControl(),
               });
   Edit() {
     this.editflag = true;
-   
-    //  this.productserice.EditReview(this.id,this.reviewForm.value).subscribe(
-    //    a => { 
-    //     this.ngOnInit()
-    //    })
   }
-EditComment() {
+  EditComment() {
+  
      this.productserice.EditReview(this.id,this.reviewForm1.value).subscribe(
        a => { 
          this.commentflag = true;
@@ -99,7 +95,6 @@ EditComment() {
       a => {
         // console.log(a);
         this.ngOnInit()
-        // location.reload
   
       }
     )

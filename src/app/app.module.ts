@@ -70,7 +70,6 @@ import { ShoppingCartCardComponent } from './Components/ShoppingCart/shopping-ca
 import { CategoryService } from './Services/Category/category.service';
 import { ProductService } from './Services/Product/product.service';
 import { SubCategoryService } from './Services/SubCategory/SubCategory.service';
-import { AddReviewComponent } from './Components/add-review/add-review.component';
 import { ProductDetailsComponent } from './Pages/product-details/product-details.component';
 import { ProductviewComponent } from './Pages/productview/productview.component';
 
@@ -112,7 +111,6 @@ import { ProductviewComponent } from './Pages/productview/productview.component'
     CategoryDetailsComponent,
     ShoppingCartComponent,
     ShoppingCartCardComponent,
-    AddReviewComponent,
     ProductviewComponent,
   ],
   imports: [
