@@ -10,13 +10,13 @@ import { FormsService } from 'src/app/Services/Forms/forms.service';
 })
 export class ChangePassComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private customerService:FormsService,private router: Router) { }
+  constructor(private customerService:FormsService) { }
 
   form: FormGroup =new FormGroup({
     Password: new FormControl('',[
       Validators.required,
       Validators.minLength(8),
-  
+  Validators.pattern(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.).{8,32}$/),
     ]),
     CPassword: new FormControl('',[
       Validators.required,

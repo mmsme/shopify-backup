@@ -66,4 +66,12 @@ export class ProductService {
     const newUrl = 'http://localhost:23873/api/Review/' + ProductId;
     return this.HttpClient.post<any>(newUrl, body, this.httpOptions);
   }
+   EditReview(ProductId: any, body: any) {
+    const newUrl = 'http://localhost:23873/api/Review/' + ProductId;
+    return this.HttpClient.put<any>(newUrl, body, this.httpOptions);
+  }
+   DeleteReview(ProductId: any) {
+    const newUrl = 'http://localhost:23873/api/Review/' + ProductId;
+    return this.HttpClient.delete<any>(newUrl, this.httpOptions);
+  }
 }

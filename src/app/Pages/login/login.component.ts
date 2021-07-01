@@ -26,17 +26,12 @@ export class LoginComponent implements OnInit {
   });
   }
 signInWithFB(): void {
-  this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((data) => {
+      localStorage.setItem('SocialUser', JSON.stringify(data));
+      this.router.navigateByUrl('/customer').then();
+    });
 }
- public signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(res => {
-    const user: SocialUser = { ...res };
-    console.log(user);
-  }, error => console.log(error));
-  }
-  public signOut(): void {
-    this.authService.signOut();
-  }
+
   loginForm = new FormGroup({
     Email: new FormControl('',[ Validators.required,
       Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
@@ -58,6 +53,12 @@ signInWithFB(): void {
      e => console.log(JSON.stringify( e)) 
     )
    }
+signInHandler(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
+      localStorage.setItem('google_auth', JSON.stringify(data));
+      this.router.navigateByUrl('/customer').then();
+    });
+  }
 
       
     }

@@ -6,7 +6,8 @@
         <input type="password" class="form-control" formControlName="Password" id="Password">
         <div *ngIf="form.get('Password')?.invalid && form.get('Password')?.touched">
             <small class="text-danger">Password is
-                required minimum 8 characters and numbers</small>
+                required minimum 8 characters and numbers and must contain CAPITAL character and @
+                sign</small>
         </div>
     </div>
     <div class="form-holder">

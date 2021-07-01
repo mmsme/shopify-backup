@@ -24,7 +24,7 @@
                         [class.hide]="showPassword"></i>
                 </div>
                 <div *ngIf="loginForm.get('Password')?.invalid && loginForm.get('Password')?.touched">
-                    <small class="text-danger">Password is required</small>
+                    <small class="text-danger">Enter valid Password</small>
 
                 </div>
             </div>
@@ -35,14 +35,18 @@
                     Remember Me
                 </label>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" [disabled]="!loginForm.valid">Login</button>
             <br>
+                <!-- <button class="btn btn-block google-sign-in" (click)="signInHandler()">
+                                                    <i class="fab fa-google fa-lg"></i><span>Continue with Google</span>
+                                                </button> -->
+
             <div class="text-center">Or Login With
                 <br><br>
 
-                <a style="color: #3b5998;" href="#!" class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"
+                <a style="color: #3b5998;" class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"
                     role="button"><i class="fab fa-facebook-f fa-lg"> </i></a>
-                <a style="color: #dd4b39;" href="#!" class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"
+                <a style="color: #dd4b39;" class="btn google-sign-in" (click)="signInHandler()"
                     role="button"><i class="fab fa-google fa-lg"></i></a>
                 <br><br>
                 <a href="/forget-password">Forget Password</a>

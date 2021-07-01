@@ -141,16 +141,17 @@ import { ProductviewComponent } from './Pages/productview/productview.component'
     ProductService,
     CategoryService,
     SubCategoryService,
+   
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
-        autoLogin: true,
+        autoLogin: false,
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '38322060992-tn7u0jd3d66sh4l68djtaa96k447rjbe.apps.googleusercontent.com'
-            ),
+               '772037916973-dssj5fiml0kf3phdkmqqm66d3ih9g614.apps.googleusercontent.com' // add web app client id
+            )
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,

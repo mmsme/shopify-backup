@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,17 +9,27 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   @Input('drawer') drawer: any;
   @Input('cart-price') cartPrice: number = 0;
+  public userDetails;
+  flag: any = false;
 
   constructor() {}
-  flag: any = 0;
   ngOnInit(): void {
-    if (localStorage.getItem('token')) {
-      this.flag = 1;
+    const storage = localStorage.getItem('google_auth');
+    if (localStorage.getItem('token')||storage) {
+      this.flag = true;
+      this.userDetails = JSON.parse(storage);
+      console.log(this.flag)
+    }
+    else {
+      this.logout();
     }
   }
+  
+  logout(): void {
+     localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    this.flag = false;
 
-  logout() {
-    localStorage.removeItem('token');
-    this.flag = 0;
+    localStorage.removeItem('google_auth');
   }
 }

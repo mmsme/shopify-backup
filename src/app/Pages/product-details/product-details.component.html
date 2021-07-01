@@ -220,9 +220,41 @@
 
     <!-- end second section-->
     <!--rating-->
-    <div class="justify-content-center" *ngIf="commentflag==false">
-        <app-add-review [id]="product.productId" class="col-11 ml-3 bg-white d-md-flex"></app-add-review>
-    </div>
+    <div class="justify-content-center" *ngIf="commentflag==false ">
+        <div class="col-1"> <img src="assets/images/profile/profile.jpg" width="70" class="rounded-circle mt-2"> </div>
+        <div class="col-11">
+            <h4>Add a comment</h4>
+            <form [formGroup]="reviewForm" (ngSubmit)="OnSubmit()">
+                <div class="rating">
+                    <input type="radio" formControlName="review" value="5" id="5">
+                    <label for="5">☆</label>
+                    <input type="radio" formControlName="review" value="4" id="4">
+                    <label for="4">☆</label>
+                    <input type="radio" formControlName="review" value="3" id="3">
+                    <label for="3">☆</label>
+                    <input type="radio" formControlName="review" value="2" id="2">
+                    <label for="2">☆</label>
+                    <input type="radio" formControlName="review" value="1" id="1">
+                    <label for="1">☆</label>
+                </div>
+                <div class="comment-area"> <textarea formControlName="comment" class="form-control"
+                        placeholder="what is your comment?" rows="4"></textarea> </div>
+                <div class="comment-btns mt-2 mb-2">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="pull-left"> <button class="btn btn-success btn-sm">Cancel</button> </div>
+                        </div>
+                        <div class="offset-1 col-3">
+                            <div class="pull-right">
+                                <button class="btn btn-success send btn-sm" type="submit"
+                                    (click)="EditComment()">edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
 
     <section id="sectionRecently" class="mt-3">
         <div class="d-inline-flex justify-content-between p-3">
@@ -260,23 +292,40 @@
                                     <div class="d-flex flex-row comment-row m-t-0">
                                         <div class="p-2"><img src="assets/images/profile/profile.jpg" alt="user"
                                                 width="50" class="rounded-circle"></div>
-                                        <div class="comment-text w-100">
-                                            <h6 class="font-medium">{{item.customer.applicationUser.fname }}
-                                                {{item.customer.applicationUser.lname}}</h6>
-                                            <div class="rating" id="raiting" class="d-flex mt-2 mb-0">
-                                                <ul class="list-inline rating-list" *ngFor="let star of stars"
-                                                    style="display: inline-block">
-                                                    <li [ngClass]="{'selected': (star <= item.review)}">
-                                                        <i class="fa fa-star"></i>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <span class="m-b-15 d-block">{{item.comment}}</span>
-                                            <div class="comment-footer">
+                                                <div class="comment-text w-100">
+                                                    <h6 class="font-medium">{{item.customer.applicationUser.fname }}
+                                                        {{item.customer.applicationUser.lname}}</h6>
+                                                        <div class="rating" id="raiting" class="d-flex mt-2 mb-0">
+                                                            <ul class="list-inline rating-list" *ngFor="let star of stars"
+                                                            style="display: inline-block">
+                                                            <li [ngClass]="{'selected': (star <= item.review)}">
+                                                                <i class="fa fa-star"></i>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <span class="m-b-15 d-block" *ngIf="commentflag==true&&editflag==false">{{item.comment}}</span>
+                                                    <form [formGroup]="reviewForm1" (ngSubmit)="OnSubmit()">
+                                                        <div *ngIf="editflag==true">
+                                                            <div class="comment-area"> <textarea formControlName="comment" class="form-control"
+                                                                    [(placeholder)]="item.comment" rows="4"></textarea> </div>
+                                                            <div class="comment-btns mt-2 mb-2">
+                                                                <div class="row">
+                                                                    <div class="col-2">
+                                                                        <div class="pull-left"> <button class="btn btn-success btn-sm">Cancel</button> </div>
+                                                                    </div>
+                                                                    <div class="offset-1 col-3">
+                                                                        <div class="pull-right">
+                                                                            <button class="btn btn-success send btn-sm" *ngIf="editflag==true" type="submit"
+                                                                                (click)="EditComment()">edit</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <div class="comment-footer" *ngIf="item.customer.applicationUser.email==email">
 
-                                                <i class="fa fa-edit btn  btn-cyan btn-sm rounded-circle"></i> |
-                                                <i class="fas fa-trash-alt btn btn-danger btn-sm rounded-circle"></i>
-
+                                                <i class="fa fa-edit btn  btn-cyan btn-sm rounded-circle" *ngIf="editflag==false" (click)="Edit()"></i>
                                             </div>
                                         </div>
                                     </div> <!-- Comment Row -->

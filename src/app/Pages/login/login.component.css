@@ -155,6 +155,7 @@ button:hover:after {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
 }
+
 @media (max-width: 767px) {
     .image-1,
     .image-2 {
