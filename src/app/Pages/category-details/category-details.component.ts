@@ -21,7 +21,10 @@ export class CategoryDetailsComponent implements OnInit {
     this.ar.params.subscribe((url) => {
       this.categoryServices
         .getCategoryById(url.id)
-        .subscribe((_category: any) => (this.category = _category));
+        .subscribe((_category: any) => {
+          this.category = _category;
+          console.log(_category);
+        });
     });
   }
 

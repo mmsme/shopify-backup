@@ -1,9 +1,16 @@
 <div class="wrapper">
   <div class="d-flex justify-content-center">
-    <p class="display-4">{{category.name}} Category</p>
+    <p class="h4">{{ category.name }} Category</p>
   </div>
-  <div class="categories-container mt-5 d-flex flex-wrap justify-content-center">
-    <app-category-card (click)="showSubCategory(item.subCategoryId)" class="m-4"
-      *ngFor="let item of category.subCategories" [name]="item.name"></app-category-card>
+  <div
+    class="categories-container mt-5 d-flex flex-wrap justify-content-center"
+  >
+    <app-category-card
+      (click)="showSubCategory(item.subCategoryId)"
+      class="m-4"
+      *ngFor="let item of category.subCategories"
+      [name]="item.name"
+      [image]="item.image"
+    ></app-category-card>
   </div>
 </div>

@@ -6,4 +6,5 @@ export interface SubCategory {
   categoryId: any;
   products: any;
   brands: any;
+  image: string;
 }
