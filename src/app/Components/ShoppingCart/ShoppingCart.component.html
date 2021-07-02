@@ -4,7 +4,10 @@
     (quantity)="updateBill(item.productId,$event)" (delete)="deleteFromCart($event)">
   </app-shopping-cart-card>
 </div> -->
-<div class="container pt-4">
+
+<!--! cannot start rendering something before i get it so use ng-if  with loading flag --->
+
+<div class="container pt-4" *ngIf="!isLoading">
   <div *ngIf="isEmpty; else showProducts">
     <h1>You Cart Is Empty</h1>
   </div>

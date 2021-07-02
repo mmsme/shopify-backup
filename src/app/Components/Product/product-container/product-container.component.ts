@@ -37,6 +37,9 @@ export class ProductContainerComponent implements OnInit {
       400: {
         items: 2,
       },
+      566: {
+        items: 2,
+      },
       600: {
         items: 3,
       },
@@ -67,17 +70,27 @@ export class ProductContainerComponent implements OnInit {
   }
 
   loadTopDeals() {
-    this.prodService.getTopSales().subscribe((topSeals: Product[]) => {
-      this.products = [...topSeals];
-      this.isLoading = false;
-    });
+    this.prodService.getTopSales().subscribe(
+      (topSeals: Product[]) => {
+        this.products = [...topSeals];
+        this.isLoading = false;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   loadTopSales() {
-    this.prodService.getTopDeals().subscribe((topDeals: Product[]) => {
-      this.products = [...topDeals];
-      this.isLoading = false;
-    });
+    this.prodService.getTopDeals().subscribe(
+      (topDeals: Product[]) => {
+        this.products = [...topDeals];
+        this.isLoading = false;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   viewMore() {

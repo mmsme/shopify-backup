@@ -14,45 +14,85 @@
 
 <section id="middle-bar">
   <nav class="navbar navbar-expand-sm navbar-light">
-    <div class="navbar-brand mr-md-4" [routerLink]="['/home']"><span>Shopify</span></div>
+    <div class="navbar-brand mr-md-4" [routerLink]="['/customer']">
+      <span>Shopify</span>
+    </div>
 
     <!-- navbar menu in Small Screen -->
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <i class="fas fa-bars"></i>
     </button>
 
     <app-search class="mt-2 d-block d-sm-none"></app-search>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
-
       <ul class="mt-2 ml-1 mr-2 mr-auto navbar-nav mt-lg-0 d-block d-sm-none">
         <li class="nav-item">
-          <a class="nav-link d-flex align-content-center" [routerLink]="['/login']">
-            <i class="mt-1 mr-1 fas fa-user"></i> <span>Login</span></a>
+          <a
+            class="nav-link d-flex align-content-center"
+            [routerLink]="['/login']"
+          >
+            <i class="mt-1 mr-1 fas fa-user"></i> <span>Login</span></a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="drawer.open()">
-            <i class="mr-1 fas fa-shopping-cart"></i> Cart</a>
+            <i class="mr-1 fas fa-shopping-cart"></i> Cart</a
+          >
         </li>
       </ul>
     </div>
     <!--end of navbar menu -->
 
     <!--Navbar controls-->
-    <div id="navbar-controls" class="d-none d-md-flex justify-content-between w-100">
+    <div
+      id="navbar-controls"
+      class="d-none d-md-flex justify-content-between w-100"
+    >
       <app-search class="flex-shrink-1"></app-search>
       <div id="login" class="ml-3 d-flex">
-        <a class="nav-link1 d-flex align-content-center" [routerLink]="['/customer/profile']">
-          <button type="button" class="text-center btn login-btn float-md-right btn-sm">
+        <a
+          class="nav-link1 d-flex align-content-center"
+          [routerLink]="['/customer/profile']"
+        >
+          <button
+            type="button"
+            class="text-center btn login-btn float-md-right btn-sm"
+          >
             <span class="fas fa-user"></span>
           </button>
         </a>
-        <a class="nav-link1 d-flex align-content-center" [routerLink]="['/login']">
-          <span class="p-1 pt-3 ml-md-1 ml-lg-2" id="login-label" *ngIf="flag==false">Login</span>
+        <a
+          class="nav-link1 d-flex align-content-center"
+          [routerLink]="['/login']"
+        >
+          <span
+            class="p-1 pt-3 ml-md-1 ml-lg-2"
+            id="login-label"
+            *ngIf="flag == false"
+            >Login</span
+          >
         </a>
-        <span class="p-1 pt-3 ml-md-1 ml-lg-2" id="login-label" *ngIf="flag==true" (click)="logout()">Logout</span>
+        <span
+          class="p-1 pt-3 ml-md-1 ml-lg-2"
+          id="login-label"
+          *ngIf="flag == true"
+          (click)="logout()"
+          >Logout</span
+        >
       </div>
-      <app-side-cart class="ml-lg-5 ml-md-1 float-sm-right" [drawer]="drawer" [price]="cartPrice"></app-side-cart>
+      <app-side-cart
+        class="ml-lg-5 ml-md-1 float-sm-right"
+        [drawer]="drawer"
+        [price]="cartPrice"
+      ></app-side-cart>
     </div>
     <!-- end of navbar Controls -->
   </nav>

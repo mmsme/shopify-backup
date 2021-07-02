@@ -12,7 +12,7 @@ export class ShoppingCartComponent implements OnInit {
   products: Product[];
   totalPrice: number = 0;
   bill: any[] = [];
-
+  isLoading: boolean = true;
   cartItem: any;
   cart: any;
   stars = [1, 2, 3, 4, 5];
@@ -24,12 +24,21 @@ export class ShoppingCartComponent implements OnInit {
     this.cartItem = [];
   }
 
+  ngOnInit(): void {
+    this.Service.GetCartItems().subscribe((a) => {
+      console.log('cart', a);
+      this.cart = a;
+      this.cartItem = a.cartItems;
+      this.isLoading = false;
+    });
+  }
+
   generateBill() {
     this.products.forEach((p) => {
       this.bill.push({
         id: p.productId,
         name: p.productName,
-        price: p.price,
+        price: p.price - (p.discount / 100) * p.price,
         quantity: 1,
       });
     });
@@ -62,22 +71,16 @@ export class ShoppingCartComponent implements OnInit {
     this.generateBill();
   }
 
-  ngOnInit(): void {
-    this.Service.GetCartItems().subscribe(
-      a => {
-        console.log(a)
-        this.cart = a;
-        this.cartItem = a.cartItems
-      }
-    )
-  }
-
   delete(productId: any) {
     this.Service.DeleteCartItem(productId).subscribe((a) => {
       alert('Deleted');
       this.ngOnInit();
     });
   }
+
+  /* -------------------------------------------------------------------------- */
+  /* -------------------------------------------------------------------------- */
+  /* -------------------------------------------------------------------------- */
 
   Fav(productId: any) {
     this.Service.AddCartItemsTOFav(productId).subscribe((a) => {

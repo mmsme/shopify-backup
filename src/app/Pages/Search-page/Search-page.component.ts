@@ -26,6 +26,7 @@ export class SearchPageComponent implements OnInit {
     this.ar.queryParams.subscribe((url: any) => {
       if (url?.key) {
         this.key = url.key;
+        this.search();
       }
 
       if (url.type && url.type == 'top_deals') {
@@ -39,14 +40,17 @@ export class SearchPageComponent implements OnInit {
 
     this.ar.params.subscribe((url) => {
       if (url.id) {
-        this.subCategoryServices
-          .getProductsById(url.id)
-          .subscribe((SubCategory) => {
+        this.subCategoryServices.getProductsById(url.id).subscribe(
+          (SubCategory) => {
             this.subCategory = SubCategory;
             this.products = [...this.subCategory.products];
             this.productServices.updatedProducts.next([...this.products]);
             this.isLoading = false;
-          });
+          },
+          () => {
+            this.isLoading = false;
+          }
+        );
       }
     });
   }
@@ -56,27 +60,42 @@ export class SearchPageComponent implements OnInit {
   }
 
   search() {
-    this.productServices.searchByKey(this.key).subscribe((data) => {
-      console.log(data);
-      this.products = [...data];
-      this.productServices.updatedProducts.next([...data]);
-      this.isLoading = false;
-    });
+    this.productServices.searchByKey(this.key).subscribe(
+      (data) => {
+        console.log('search res', data);
+        this.products = [...data];
+        this.productServices.updatedProducts.next([...data]);
+        this.isLoading = false;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   loadTopSales() {
-    this.productServices.getTopDeals().subscribe((data) => {
-      this.products = [...data];
-      this.productServices.updatedProducts.next([...data]);
-      this.isLoading = false;
-    });
+    this.productServices.getTopDeals().subscribe(
+      (data) => {
+        this.products = [...data];
+        this.productServices.updatedProducts.next([...data]);
+        this.isLoading = false;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   loadTopDeals() {
-    this.productServices.getTopDeals().subscribe((data) => {
-      this.products = [...data];
-      this.productServices.updatedProducts.next([...data]);
-      this.isLoading = false;
-    });
+    this.productServices.getTopDeals().subscribe(
+      (data) => {
+        this.products = [...data];
+        this.productServices.updatedProducts.next([...data]);
+        this.isLoading = false;
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 }

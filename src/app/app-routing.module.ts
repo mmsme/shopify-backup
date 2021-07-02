@@ -19,7 +19,6 @@ import { SavedItemsComponent } from './Components/ProfileSideMenu/saved-items/sa
 
 import { ForgetPasswordComponent } from './Pages/forget-password/forget-password.component';
 import { ProfileComponent } from './Pages/profile/profile.component';
-import { SellerRegisterComponent } from './Pages/Register/seller-register/seller-register.component';
 import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
 import { AuthGuard } from './Services/Auth/auth.guard';
 import { ShoppingCartComponent } from './Components/ShoppingCart/ShoppingCart.component';
@@ -34,35 +33,43 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'search', component: SearchPageComponent },
       { path: 'search/:id', component: SearchPageComponent },
-      { path: 'category/:id',component: CategoryDetailsComponent},
-      {path: 'productdetails/:id',component: ProductDetailsComponent},
+      { path: 'category/:id', component: CategoryDetailsComponent },
+      { path: 'productdetails/:id', component: ProductDetailsComponent },
       { path: 'cart', component: ShoppingCartComponent },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: 'orders', component: OrdersComponent },
-      { path: 'inbox', component: InboxComponent },
-      { path: 'edit', component: DetailsComponent },
-      { path: 'address', component: AddressBookComponent },
-      { path: 'changepass', component: ChangePassComponent },
-      { path: '**', component: AccountOverviewComponent },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuard],
+        children: [
+          { path: 'orders', component: OrdersComponent },
+          { path: 'inbox', component: InboxComponent },
+          { path: 'edit', component: DetailsComponent },
+          { path: 'address', component: AddressBookComponent },
+          { path: 'changepass', component: ChangePassComponent },
+          { path: '**', component: AccountOverviewComponent },
+        ],
+      },
+      {
+        path: 'wishlist',
+        component: SavedItemsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'history',
+        component: RecentlyViewedComponent,
+        canActivate: [AuthGuard],
+      },
+      // { path: 'notfound', component: NotFoundComponent },
     ],
   },
-  { path: 'wishlist', component: SavedItemsComponent ,canActivate: [AuthGuard],},
-  {
-    path: 'history',
-    component: RecentlyViewedComponent,
-    canActivate: [AuthGuard],
-  },
-  { path: 'notfound', component: NotFoundComponent },
-],},
-{ path: 'login', component: LoginComponent },
-// { path: 'seller-Register', component: SellerRegisterComponent },
-{ path: 'customer-Register', component: CustomerRegisterComponent },
-{ path: 'forget-password', component: ForgetPasswordComponent },
-{ path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'login', component: LoginComponent },
+  // { path: 'seller-Register', component: SellerRegisterComponent },
+  { path: 'customer-Register', component: CustomerRegisterComponent },
+  { path: 'forget-password', component: ForgetPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
+
+  //! wild card don't change it or i'll kill you
+  { path: '**', component: NotFoundComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
