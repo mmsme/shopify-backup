@@ -8,7 +8,7 @@
                 <div class="form-holder col-6">
                     <label class="form-label">First Name: *</label>
                     <input type="text" class="form-control" formControlName="Fname" id="Fname">
-                    <div *ngIf="Registerform.get('Fname')?.invalid && Registerform.get('Fname')?.touched">
+                    <div *ngIf="Registerform?.invalid &&Registerform.get('Fname')?.invalid && Registerform.get('Fname')?.touched">
                         <small class="text-danger">
                             required minimum 3 characters</small>
                     </div>
@@ -16,50 +16,39 @@
                 <div class="form-holder col-6">
                     <label class="form-label">Last Name: *</label>
                     <input type="text" class="form-control" formControlName="Lname" id="Lname">
-                    <div *ngIf="Registerform.get('Lname')?.invalid && Registerform.get('Lname')?.touched">
+                    <div *ngIf="Registerform?.invalid &&Registerform.get('Lname')?.invalid && Registerform.get('Lname')?.touched">
                         <small class="text-danger">
                             required minimum 3 characters</small>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="form-holder col-4">
-                    <label class="form-label">UserName:*</label>
-                    <input type="text" class="form-control" formControlName="Username" id="Username">
-                    <div *ngIf="Registerform.get('Username')?.invalid && Registerform.get('Username')?.touched">
-                        <small class="text-danger">Username is required </small>
-                    </div>
-                </div>
-                <div class="form-holder col-8">
+        <div class="form-holder">
                     <label class="form-label">Address: *</label>
                     <input type="text" class="form-control" formControlName="Address" id="Address">
-                    <div *ngIf="Registerform.get('Address')?.invalid && Registerform.get('Address')?.touched">
+                    <div *ngIf="Registerform?.invalid &&Registerform.get('Address')?.invalid && Registerform.get('Address')?.touched">
                         <small class="text-danger">Address is required </small>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="form-holder col-4">
-                    <label class="form-label">Gender: *</label>
-                    <select id="Gender" style="width:100% ;height: 45px;border-color: #ced4da;"
-                        class="form-select form-select-lg mb-1" formControlName="Gender">
-                        <option selected value="Male"> Male</option>
-                        <option value="Female"> Female</option>
-                    </select>
-                    <div *ngIf="Registerform.get('Gender')?.invalid && Registerform.get('Gender')?.touched">
-                        <small class="text-danger">Gender is required </small>
-                    </div>
-                </div>
-                <div class="form-holder col-8">
+                <div class="form-holder">
                     <label class="form-label">Email: *</label>
                     <input type="email" class="form-control" formControlName="Email" id="Email">
-                    <div *ngIf="Registerform.get('Email')?.invalid && Registerform.get('Email')?.touched">
+                    <div *ngIf="Registerform?.invalid &&Registerform.get('Email')?.invalid && Registerform.get('Email')?.touched">
                         <small class="text-danger">Email is required </small>
                     </div>
                 </div>
-            </div>
             <div class="row">
-                <div class="form-holder col-6 form-group inner-addon right-addon">
+                <div class="form-holder col-4">
+                    <label class="form-label">Gender: *</label>
+                    <select id="Gender" style="width:100% ;height: 45px;border-color: #ced4da;" class="form-select form-select-lg mb-1"
+                        formControlName="Gender">
+                        <option selected value="Male"> Male</option>
+                        <option value="Female"> Female</option>
+                    </select>
+                    <div *ngIf="Registerform?.invalid &&Registerform.get('Gender')?.invalid && Registerform.get('Gender')?.touched">
+                        <small class="text-danger">Gender is required </small>
+                    </div>
+                </div>
+                <div class="form-holder col-8 form-group inner-addon right-addon">
                     <label class="form-label">Password: *</label>
                     <div class="input-group  mx-auto">
                         <input type="password" [type]="showPassword ? 'text' : 'password'"
@@ -70,40 +59,16 @@
                             [class.hide]="showPassword"></i>
                     </div>
                 </div>
-
-
-                <div class="form-holder col-6 form-group inner-addon right-addon">
-                    <label class="form-label">Confirm Password: *</label>
-                    <div class="input-group  mx-auto">
-                        <input required type="password" [type]="showPassword1 ? 'text' : 'Password'"
-                            class="form-control pwd-control" id="ConfirmPassword">
-                        <i alt="show" class="far fa-eye eye-show" (click)="showPassword1 = !showPassword1"
-                            [class.hide]="!showPassword1"></i>
-                        <i alt="hide" class="far fa-eye-slash eye-hide" (click)="showPassword1 = !showPassword1"
-                            [class.hide]="showPassword1"></i>
-                    </div>
-                </div>
                 <div class="col-12"
-                    *ngIf="Registerform.get('Password')?.invalid && Registerform.get('Password')?.touched">
+                    *ngIf="Registerform?.invalid &&Registerform.get('Password')?.invalid && Registerform.get('Password')?.touched">
                     <small class="text-danger">Password is
                         required minimum 8 characters and numbers and must contain CAPITAL character and @
                         sign</small>
                 </div>
-                <div class="col-12"
-                    *ngIf="Registerform.get('ConfirmPassword')?.invalid && Registerform.get('ConfirmPassword')?.touched">
-                    <small class="text-danger">Confirm Password is
-                        required</small>
-                </div>
+            
             </div>
             <button type="submit" [disabled]="!Registerform.valid">Submit</button>
-            <br>
-            <div class="text-center">
-                <span>To Create Seller Account
-                    <a href="/seller-Register" id="login"
-                        style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;">Click Here
-                    </a></span>
-            </div>
-            <div class="text-center"><span>If you have account
+        <div class="text-center mt-1"><span>If you have account
                     <a href="" id="login"
                         style="text-decoration: underline; color:rgb(61, 92, 179) ;padding-left: 10px;">
                         Login </a></span></div>

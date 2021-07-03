@@ -1,44 +1,49 @@
 <header class="-df -i-ctr -pvs -phm -bb -mh-48px">
     <h1 class="-fs20 -m -elli">Account Overview</h1>
 </header>
-<div class="row">
-    <div class="column col col-6">
-        <div class="card c2">
-            <article class="card-b -fh -df -d-co">
-                <header class="row">
-                    <h2 class="-upp -fs14 -m -pam">Account details</h2><a class="btn _def _i _rnd -mhm"
-                        aria-label="Edit Account" [routerLink]="['edit']"><svg viewBox="0 0 24 24" class="ic" width="24"
-                            height="24">
-                            <use xlink:href="assets/images/i-icons.004b4c5e.svg#edit"></use>
-                        </svg></a>
-                </header>
+<div class="row mt-2">
+    <div class="column col col-6 mt-3">
+        <article class="card-b ">
+            <a aria-label="Edit Account" [routerLink]="['edit']" style="float: right;color: #128Fbc;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                    <path fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                </svg>
+            </a>
+            <h2 class="-upp -fs14 -m -pam">Account details</h2>
                 <div class="-fg1 -pas">
                     <p class="-fs16 -phs -pts">{{data.fname}}</p>
                     <p class="-fs16 -phs -pts"> {{data.lname}}</p>
                     <p class="-gy5 -pas -wb-ba">{{data.email}}</p>
-                </div><a class="btn _def -me-start -mam" [routerLink]="['changepass']">Change Password</a>
+                </div>
+                <a href="#" class="btn " style=" background-color:#ffe45c;" [routerLink]="['changepass']">Change
+                    Password</a>
             </article>
-        </div>
+        
     </div>
     <div class="column col-6">
-        <div class="card c2">
-            <article class="card-b -fh -df -d-co">
-                <header class="row">
-                    <h2 class="-upp -fs14 -m -pam">Address Book</h2><a class="btn _def _i _rnd -mhm"
-                        aria-label="Edit Address" href="/customer/address/edit/5897548/"><svg viewBox="0 0 24 24"
-                            class="ic" width="24" height="24">
-                            <use xlink:href="https://www.jumia.com.eg/assets_he/images/i-icons.004b4c5e.svg#edit"></use>
-                        </svg></a>
-                </header>
+            <article class="card-b ">
+                <a aria-label="Edit Account" [routerLink]="['edit']" style="float: right;color: #128Fbc;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                        <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                    </svg>
+                </a>
+                <h2 class="-upp -fs14 -m -pam">Address Book</h2>
                 <div class="-pvs">
                     <p class="-fs16 -phm -pts">Your default shipping address:</p>
                     <address class="-gy5 -pvs -phm -n -tal">
                         <p>{{data.address}}</p>
-                        <!-- <p>Met salsel, Al Daqahliya</p>
-                        <p class="-ltr">+20 1100430384</p> -->
                     </address>
+                    <a href="#" class="btn " style=" background-color:#ffe45c;" [routerLink]="['address']">Change
+                        Address</a>
                 </div>
             </article>
-        </div>
     </div>
 </div>

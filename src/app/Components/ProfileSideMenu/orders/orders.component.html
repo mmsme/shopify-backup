@@ -61,5 +61,33 @@
                 class="btn _prim -mtl">Start
                 Shopping</a>
         </div>
+        <div class="container px-1 px-md-4 py-5 mx-auto" *ngFor="let item of closedOrders">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12">
+                    <ul id="progressbar" class="text-center">
+                        <li id="approved"
+                            [class.active]="item.status.statusName=='Approved'||item.status.statusName=='Shipped'||item.status.statusName=='Arrived' "
+                            class="active step0 "></li>
+                        <li id="shipped"
+                            [class.active]="item.status.statusName == 'Shipped'||item.status.statusName == 'Arrived'"
+                            class=" step0 "></li>
+                        <li id="arrived" [class.active]="item.status.statusName == 'Arrived'" class=" step0 "></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between px-3 top">
+                <div class="d-flex">
+                    <h5>ORDER <span class="text-primary font-weight-bold">#{{item.cartId}}</span></h5>
+                </div>
+                <div class="d-flex flex-column text-sm-right">
+                    <p class="mb-0">Arrival <span>{{item.dueDate}}</span></p>
+                </div>
+                <div class="d-flex  justify-content-between mx-6">
+                    <h5> Cost <span class="text-primary font-weight-bold">{{item.status.carts[0].cost}}</span></h5>
+                </div>
+            </div>
+        
+            <hr>
+        </div>
     </mat-tab>
 </mat-tab-group>
