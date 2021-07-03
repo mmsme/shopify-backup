@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Category } from 'src/app/Models/Category';
+import { port } from '../port';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-  private port = 23873;
-  private url = `http://localhost:${this.port}/api/Category`;
+  private url = `http://localhost:${port}/api/Category`;
   private Categories: Category[] = [];
   private updatedCategories = new Subject<Category[]>();
 

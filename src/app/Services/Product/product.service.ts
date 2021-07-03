@@ -2,14 +2,12 @@ import { Product } from './../../Models/Product';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
-
+import { port } from '../port';
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private port = 23873;
-  private baseUrl: string = `http://localhost:${this.port}/api`;
+  private baseUrl: string = `http://localhost:${port}/api`;
 
   private Products: Product[] = [];
   updatedProducts = new Subject<Product[]>();
@@ -63,15 +61,15 @@ export class ProductService {
     return this.HttpClient.get<any>(newUrl, this.httpOptions);
   }
   AddReview(ProductId: any, body: any) {
-    const newUrl = 'http://localhost:23873/api/Review/' + ProductId;
+    const newUrl = 'http://localhost:' + port + '/api/Review/' + ProductId;
     return this.HttpClient.post<any>(newUrl, body, this.httpOptions);
   }
-   EditReview(ProductId: any, body: any) {
-    const newUrl = 'http://localhost:23873/api/Review/' + ProductId;
+  EditReview(ProductId: any, body: any) {
+    const newUrl = 'http://localhost:' + port + '/api/Review/' + ProductId;
     return this.HttpClient.put<any>(newUrl, body, this.httpOptions);
   }
-   DeleteReview(ProductId: any) {
-    const newUrl = 'http://localhost:23873/api/Review/' + ProductId;
+  DeleteReview(ProductId: any) {
+    const newUrl = 'http://localhost:' + port + '/api/Review/' + ProductId;
     return this.HttpClient.delete<any>(newUrl, this.httpOptions);
   }
 }

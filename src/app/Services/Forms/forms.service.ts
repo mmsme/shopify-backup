@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { port } from '../port';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +10,8 @@ export class FormsService {
 
   constructor(private http: HttpClient) {}
 
-  readonly Url = 'http://localhost:23873/api/Authentication/';
-  readonly customerUrl = 'http://localhost:23873/api/';
+  readonly Url = 'http://localhost:' + port + '/api/Authentication/';
+  readonly customerUrl = 'http://localhost:' + port + '/api/';
   token: string = JSON.stringify(localStorage.getItem('token'));
   public get loggedIn(): boolean {
     return localStorage.getItem('token') !== null;
