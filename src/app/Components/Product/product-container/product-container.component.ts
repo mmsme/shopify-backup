@@ -70,13 +70,9 @@ export class ProductContainerComponent implements OnInit {
   }
 
   loadTopDeals() {
-    this.prodService.getTopSales().subscribe(
-      (topDeals: Product[]) => {
-        this.products = topDeals.filter((e) => {
-          console.log(e);
-
-          return this.inRange(e.rangeDate);
-        });
+    this.prodService.getTopDeals().subscribe(
+      (topSeals: Product[]) => {
+        this.products = [...topSeals];
         this.isLoading = false;
       },
       () => {
@@ -86,9 +82,14 @@ export class ProductContainerComponent implements OnInit {
   }
 
   loadTopSales() {
-    this.prodService.getTopDeals().subscribe(
-      (topSeals: Product[]) => {
-        this.products = [...topSeals];
+    this.prodService.getTopSales().subscribe(
+      (topDeals: Product[]) => {
+        this.products = topDeals.filter((e) => {
+          console.log(e);
+          console.log(e.rangeDate);
+
+          return this.inRange(e.rangeDate);
+        });
         this.isLoading = false;
       },
       () => {
