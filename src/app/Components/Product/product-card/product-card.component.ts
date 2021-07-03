@@ -29,21 +29,8 @@ export class ProductCardComponent implements OnInit {
     if (this.discount == 0) {
       this.sale = false;
     } else {
-      if (this.date) {
-        if (this.inRange(this.date)) {
-          this.sale = true;
-        }
-      }
+      this.sale = true;
     }
-  }
-
-  inRange(data: string) {
-    let _date = data.split(',');
-    let today = new Date().getTime();
-    let from = new Date(_date[0]).getTime();
-    let to = new Date(_date[1]).getTime();
-
-    return today >= from && today <= to;
   }
 
   openProduct(id: any) {
