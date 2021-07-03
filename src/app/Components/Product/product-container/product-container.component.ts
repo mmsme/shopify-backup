@@ -71,8 +71,11 @@ export class ProductContainerComponent implements OnInit {
 
   loadTopDeals() {
     this.prodService.getTopSales().subscribe(
-      (topSeals: Product[]) => {
-        this.products = [...topSeals];
+      (topDeals: Product[]) => {
+        /// to filter valid Deals and remove expired Deals
+        this.products = topDeals.filter((e) => {
+          return this.inRange(e.rangeDate);
+        });
         this.isLoading = false;
       },
       () => {
@@ -83,8 +86,8 @@ export class ProductContainerComponent implements OnInit {
 
   loadTopSales() {
     this.prodService.getTopDeals().subscribe(
-      (topDeals: Product[]) => {
-        this.products = [...topDeals];
+      (topSeals: Product[]) => {
+        this.products = [...topSeals];
         this.isLoading = false;
       },
       () => {
@@ -97,5 +100,14 @@ export class ProductContainerComponent implements OnInit {
     this.route.navigate(['/customer/search'], {
       queryParams: { type: type[this.typeNum] },
     });
+  }
+
+  inRange(data: string) {
+    let _date = data.split(',');
+    let today = new Date().getTime();
+    let from = new Date(_date[0]).getTime();
+    let to = new Date(_date[1]).getTime();
+
+    return today >= from && today <= to;
   }
 }

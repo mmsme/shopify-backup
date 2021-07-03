@@ -14,6 +14,7 @@ export class ProductCardComponent implements OnInit {
   @Input('image') image: string = '';
   @Input('rate') rate: number = 0;
   @Input('discount') discount: number = 0;
+  @Input('dateRange') date: string = '';
 
   sale: boolean = false;
 
@@ -21,7 +22,7 @@ export class ProductCardComponent implements OnInit {
 
   ngOnInit() {
     this.isHaveSale();
-    console.log(this.price)
+    console.log(this.price);
   }
 
   isHaveSale() {
@@ -32,7 +33,7 @@ export class ProductCardComponent implements OnInit {
     }
   }
   openProduct(id: any) {
-    console.log("id: ",id)
-    this.router.navigate(['/customer/productdetails/'+this.id])
+    console.log('id: ', id);
+    this.router.navigate(['/customer/productdetails/' + this.id]);
   }
 }
