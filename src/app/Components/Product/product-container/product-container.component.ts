@@ -72,8 +72,9 @@ export class ProductContainerComponent implements OnInit {
   loadTopDeals() {
     this.prodService.getTopSales().subscribe(
       (topDeals: Product[]) => {
-        /// to filter valid Deals and remove expired Deals
         this.products = topDeals.filter((e) => {
+          console.log(e);
+
           return this.inRange(e.rangeDate);
         });
         this.isLoading = false;
