@@ -19,6 +19,8 @@ export class ShoppingCartComponent implements OnInit {
   isEmpty: boolean = false;
 
   @Output('total-price') total = new EventEmitter();
+  @Output('cartId') cartId = new EventEmitter();
+ 
 
   constructor(private prodServ: ProductService, private Service: FormsService) {
     this.cartItem = [];
@@ -30,89 +32,40 @@ export class ShoppingCartComponent implements OnInit {
       this.cart = a;
       this.cartItem = a.cartItems;
       this.isLoading = false;
-    });
-  }
-
-  generateBill() {
-    this.products.forEach((p) => {
-      this.bill.push({
-        id: p.productId,
-        name: p.productName,
-        price: p.price - (p.discount / 100) * p.price,
-        quantity: 1,
-      });
+      this.total.emit(this.cart.cost);
+      this.cartId.emit(this.cart.cartId);
     });
 
-    this.calcTotalPrice();
+
   }
 
-  updateBill(product: any, quantity: number) {
-    const _prod = this.bill.find((p) => p.id == product);
-    _prod.quantity = quantity;
 
-    console.log(this.bill);
-
-    this.calcTotalPrice();
-  }
-
-  calcTotalPrice() {
-    this.totalPrice = 0;
-    this.bill.forEach((p) => {
-      this.totalPrice += p.price * p.quantity;
+  updateBill(productId: any, quantity: number) {
+    let quentity= quantity;
+    this.Service.EditCartItems(quentity,productId).subscribe((a) => {
+      this.ngOnInit();
     });
 
-    this.total.emit(this.totalPrice);
   }
 
-  deleteFromCart(event) {
-    const index = this.products.findIndex((p) => p.productId == event);
-    this.products.splice(index, 1);
-    this.bill = [];
-    this.generateBill();
-  }
 
-  delete(productId: any) {
-    this.Service.DeleteCartItem(productId).subscribe((a) => {
-      alert('Deleted');
+
+  deleteFromCart(cartItemId) {
+    if(confirm("are you sure to delete?")){
+    this.Service.DeleteCartItem(cartItemId).subscribe((a) => {
+      //alert('Deleted');
       this.ngOnInit();
     });
   }
+  }
 
-  /* -------------------------------------------------------------------------- */
-  /* -------------------------------------------------------------------------- */
-  /* -------------------------------------------------------------------------- */
+
 
   Fav(productId: any) {
     this.Service.AddCartItemsTOFav(productId).subscribe((a) => {
-      alert('Added');
+     // alert('Added');
       this.ngOnInit();
     });
   }
-
-  plus(Quentity: any, cartItemId: any, productId: any) {
-    console.log(this.cartItem[cartItemId].quantity);
-    if (
-      this.cartItem[cartItemId].quantity <
-      this.cartItem[cartItemId].product.inventoryProducts[0].quantity
-    ) {
-      Quentity++;
-      console.log(Quentity);
-      this.Service.EditCartItems(Quentity, productId).subscribe((a) => {
-        alert('your Cart Data Updated Successfuly');
-        this.ngOnInit();
-      });
-    }
-  }
-
-  min(quentity: any, cartItemId: any, productId: any) {
-    console.log(this.cartItem[cartItemId].quantity);
-    if (this.cartItem[cartItemId].quantity > 1) {
-      quentity--;
-      console.log(quentity);
-      this.Service.EditCartItems(quentity, productId).subscribe((a) => {
-        alert('your Cart Data Updated Successfuly');
-        this.ngOnInit();
-      });
-    }
-  }
+ 
 }

@@ -72,4 +72,16 @@ export class ProductService {
     const newUrl = 'http://localhost:' + port + '/api/Review/' + ProductId;
     return this.HttpClient.delete<any>(newUrl, this.httpOptions);
   }
+
+  GetGovernrate() {
+    return this.HttpClient.get<any>('http://localhost:23873/api/Governorate');
+  }
+
+
+  MakeCheckout(CheckoutData){
+    return this.HttpClient.post<any>('http://localhost:23873/api/Payment',CheckoutData,this.httpOptions);
+  }
+
+
+
 }

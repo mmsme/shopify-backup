@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsService } from 'src/app/Services/Forms/forms.service';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { Product } from '../../Models/Product';
@@ -21,8 +21,15 @@ export class ProductDetailsComponent implements OnInit {
   editflag: any = false;
   rate: any = 0;
   id: any;
+  IsTokenfound:boolean
+  governrate:any
+  selectedGovernrate:any
+  governrateDuration: any;
+  
+  startDate: number;
+  endDate: any;
   constructor(private productserice: ProductService, private service: FormsService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute , private router:Router) { }
   
   
    reviewForm = new FormGroup({
@@ -31,6 +38,16 @@ export class ProductDetailsComponent implements OnInit {
   });
   email = localStorage.getItem('email');
   ngOnInit(): void {
+    
+   this.IsTokenfound = localStorage.getItem('token')!=null?true:false;
+   this.productserice.GetGovernrate().subscribe(data=>{
+    this.governrate = data;
+    console.log(data);
+    
+   });
+
+
+
     this.route.params.subscribe((a)=> this.id=a.id)
     
     this.productserice.GetById(this.id).subscribe((a) => {
@@ -71,6 +88,11 @@ export class ProductDetailsComponent implements OnInit {
               });
   Edit() {
     this.editflag = true;
+     this.ngOnInit()
+  }
+  canselComment() {
+    this.editflag = false;
+    this.ngOnInit()
   }
   EditComment() {
   
@@ -82,10 +104,15 @@ export class ProductDetailsComponent implements OnInit {
        })
   }
   AddTOCart(Quantity: any, ProductId: any) {
+  if(!this.IsTokenfound){
+    this.router.navigate(['/login'])
+  }
+
     this.service.AddCartItems(Quantity, ProductId).subscribe(
       a => {
         // console.log(a)
-        this.ngOnInit()
+        this.cartflag = true;
+      location.reload();
       }
     )
   }
@@ -98,5 +125,18 @@ export class ProductDetailsComponent implements OnInit {
   
       }
     )
+  }
+
+
+  ChangeGovernrate(){
+    
+    const gov= this.governrate.find(e=>e.governorateName==this.selectedGovernrate);
+    
+    var date = new Date();
+    date.setDate(date.getDate()-1);
+    this.startDate=date+gov.duration;
+   
+    this.endDate = new Date()+gov.duration;
+
   }
 }

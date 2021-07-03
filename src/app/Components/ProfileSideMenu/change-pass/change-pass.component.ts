@@ -16,8 +16,7 @@ export class ChangePassComponent implements OnInit {
     Password: new FormControl('',[
       Validators.required,
       Validators.minLength(8),
-  Validators.pattern(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.).{8,32}$/),
-    ]),
+  Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)  ]),
     CPassword: new FormControl('',[
       Validators.required,
       Validators.minLength(8),

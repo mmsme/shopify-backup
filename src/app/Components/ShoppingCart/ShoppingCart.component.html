@@ -1,85 +1,10 @@
-<!-- <div class="wrapper d-flex flex-column">
-  <app-shopping-cart-card *ngFor="let item of products" [id]="item.productId" [productName]="item.productName"
-    [image]="item.productImages[0].image" [rate]="item.rate" [description]="item.description" [price]="item.price"
-    (quantity)="updateBill(item.productId,$event)" (delete)="deleteFromCart($event)">
+<div class="wrapper d-flex flex-column">
+  <app-shopping-cart-card *ngFor="let item of cartItem" [quan]="item.quantity" [cartid]="item.cartItemId"
+    [id]="item.productId" [productName]="item.product.productName" [image]="item.product.productImages[0].image"
+    [rate]="item.product.rate" [description]="item.product.description" [price]="item.totalPrice"
+    (quantity)="updateBill(item.productId,$event)" (save)="Fav(item.productId)"
+    (delete)="deleteFromCart(item.cartItemId)">
   </app-shopping-cart-card>
-</div> -->
+</div>
 
 <!--! cannot start rendering something before i get it so use ng-if  with loading flag --->
-
-<div class="container pt-4" *ngIf="!isLoading">
-  <div *ngIf="isEmpty; else showProducts">
-    <h1>You Cart Is Empty</h1>
-  </div>
-  <ng-template #showProducts>
-    <div class="row">
-<!-- *ngIf="cart!=null" -->
-      <div class="col-12 col-md-8">
-        <h2 class="title">Your Cart</h2>
-      <div class="border shadow-sm  p-3 rounded mt-3" *ngFor="let item of cartItem;let i = index">
-          <div class="row">
-            <div class="col-4 ">
-              <!--  -->
-              <img src="{{item.product.productImages[0].image}}" class="img-fluid" style="height:10rem;" />
-            </div>
-            <div class="col-8">
-              <!--  -->
-              <h3 class="mb-4">{{item.product.productName}}</h3>
-              <!--  -->
-              <h5 class="price"> {{item.totalPrice}} EGP</h5>
-              <div>
-                <h5 class="d-inline mr-2">{{item.quantity}} </h5>
-                <br>
-                <div class="rating">
-                  <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
-                    <li [ngClass]="{'selected': (star <= item.product.rate)}">
-                      <i class="fa fa-star"></i>
-                    </li>
-                  </ul>
-                  <!-- {{item.product.rate}} -->
-                </div>
-                <div class="row ml-3 my-2">
-                  <button class="btn   col-2 col-md-1 rounded-left"
-                    style="border-bottom-left-radius:50%;border-top-left-radius:50%;background-color: #feee00;color:white;font-size: large;"
-                    (click)="min(item.quantity,i,item.product.productId)">-</button>
-                  <div class="border-0 rounded-left p-0  col-1 col-md-1  d-flex justify-content-center">
-                    <input type="text" class="form-control text-center offset-3 rounded-0 input-number border-0  "
-                      style="width: 35px;padding-right: 10px;" value="{{item.quantity}}" disabled min="1" #productQty>
-                  </div>
-                  <button class="btn offset-1 col-2 col-md-1 rounded-right"
-                    style="border-bottom-right-radius:50%;border-top-right-radius:50%;background-color: #feee00;color:white;font-size: large;"
-                     (click)="plus(item.quantity,i,item.product.productId)">+</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class=" mt-2 border-top" style="text-align: center;font-size: large;font-weight: bold;margin-right:6%;">
-            <button class="btn  mx-3 mt-2 p-0" style="color: #feee00;" (click)="Fav(item.product.productId)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
-                viewBox="0 0 16 16">
-                <path
-                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-              </svg>
-
-              Save </button>
-
-            <button class="btn  mx-3 mt-2 p-0" style="color: #feee00;" (click)="delete(item.cartItemId)"> <i
-                class="fa fa-trash"></i> Remove
-              All</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="border rounded p-2">
-          <h3 class="totalPrice">Total :</h3>
-          <h4 class="ml-4" *ngIf="cart.cost!=null">{{cart.cost}} EGP</h4>
-          <h4 class="ml-4"> 0 EGP</h4>
-        </div>
-        <!-- <button class="btn btn-orange mt-3 w-100 p-2" >Make Order</button> -->
-        <!-- [disabled]="cartItem.length==0" -->
-      </div>
-    </div>
-    <button class="btn btn-orange mt-3 w-100 p-2" *ngIf="!cart" [routerLink]="['home']"
-      routerLinkActive="router-link-active">Start Shopping</button>
-  </ng-template>
-</div>

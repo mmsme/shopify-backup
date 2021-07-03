@@ -15,13 +15,13 @@
             <p class="mr-2 h5">Total Price:</p>
             <p class="h5">{{totalPrice}}$</p>
           </div>
-          <button type="button" class="checkout btn">Checkout</button>
+          <button type="button" class="checkout btn" (click)="Checkout()">Checkout</button>
         </div>
       </div>
 
       <!-- ---------------------------- cart content ----------------------------- -->
       <div class="d-flex flex-column">
-        <app-ShoppingCart (total-price)="updateTotalPrice($event)"></app-ShoppingCart>
+        <app-ShoppingCart (cartId)="GetCartId($event)" (total-price)="updateTotalPrice($event)"></app-ShoppingCart>
       </div>
     </div>
   </mat-sidenav>
