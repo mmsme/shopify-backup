@@ -91,8 +91,8 @@ export class ProductDetailsComponent implements OnInit {
      this.ngOnInit()
   }
   canselComment() {
-    this.editflag = false;
-    this.ngOnInit()
+    this.editflag = true;
+    location.reload()
   }
   EditComment() {
   
@@ -131,12 +131,12 @@ export class ProductDetailsComponent implements OnInit {
   ChangeGovernrate(){
     
     const gov= this.governrate.find(e=>e.governorateName==this.selectedGovernrate);
-    
+    console.log(gov);
     var date = new Date();
     date.setDate(date.getDate()-1);
     this.startDate=date+gov.duration;
    
     this.endDate = new Date()+gov.duration;
-
+localStorage.setItem("Address",gov.governorateId) 
   }
 }

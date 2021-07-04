@@ -34,9 +34,10 @@ export class LandingComponent implements OnInit {
 
  /////////////////////////////Payment//////////////////////////////////////
 
- Checkout() {
-
-  if(localStorage.getItem('shippingAddress')==null){
+  Checkout() {
+    let address = localStorage.getItem("Address");
+    console.log(JSON.parse(address))
+  if(address!=null){
   var handler = (<any>window).StripeCheckout.configure({
     key: 'pk_test_51J1HrQKYwUiSAlS8hkPMp3g32H4STaSlXuGzKL7JhYIKfXQt6Dge7x22TNTeCIdgamXPQFQLkA5DlFZ7ELLwjK9F009d0dqxfe',
     locale: 'auto',
@@ -44,11 +45,12 @@ export class LandingComponent implements OnInit {
       let CheckoutData={
            "striptoken":token.id,
            "cartId":this.cartId,
-           "governrateId":2
+           "governrateId":address
          }
         
          this.serviceProduct.MakeCheckout(CheckoutData).subscribe(f=>{
-            alert('payment done')
+           alert('payment done')
+           location.reload
          })
     }
   });
